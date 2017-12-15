@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/app.css">
+    <title>Kyber reserve</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light px-0">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 w-100 justify-content-end">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Rates Keeper</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Rates Crosser</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Raw Prices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Configuration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Exchange Balance</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div>
+            <div class="container py-5">
+                <div class="page-title">
+                    <img src="img/dashboard.png" alt="">
+                    <h5 class="title py-2">Kyber Reserve</h5>
+                </div>
+                <ul class="reserves pt-md-5">
+                    <li>
+                        <div class="logo">
+                            <img src="img/knc.png" alt="">
+                        </div>
+                        <div class="setting">
+                            <span>settings</span>
+                            <i class="fa fa-cog"></i>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                                <div class="label">TOKEN</div>
+                                <div class="value">KNC</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="label">
+                                    <span class="mr-auto">current reserve qty</span>
+                                    <span class="text-secondary">target</span>
+                                </div>
+                                <div class="value">
+                                    <span class="mr-auto">6953</span>
+                                    <small>/ 98563</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="label">
+                                    <span class="mr-auto">current reserve qty</span>
+                                    <span class="text-secondary">target</span>
+                                </div>
+                                <div class="value">
+                                    <span class="mr-auto">6953</span>
+                                    <small>/ 98563</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="label">&nbsp;</div>
+                                <div class="value value-progress">40%</div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-knc" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 col-md-8">
+                                <div class=" table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr class="text-secondary text-uppercase">
+                                                <th>Rate</th>
+                                                <th>Symbol</th>
+                                                <th>ASk</th>
+                                                <th>BId</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Reserve</td>
+                                                <td>KNC/ETH</td>
+                                                <td>0.7697399673695822</td>
+                                                <td>0.8697399673695822</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bittrex</td>
+                                                <td>KNC/ETH</td>
+                                                <td>0.7697399673695822</td>
+                                                <td>0.8697399673695822</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Poloniex</td>
+                                                <td>KNC/ETH</td>
+                                                <td>0.7697399673695822</td>
+                                                <td>0.8697399673695822</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Binance</td>
+                                                <td>KNC/ETH</td>
+                                                <td>0.7697399673695822</td>
+                                                <td>0.8697399673695822</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Liqui</td>
+                                                <td>KNC/ETH</td>
+                                                <td>0.7697399673695822</td>
+                                                <td>0.8697399673695822</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 text-right">
+                                <button class="btn btn-kprimary btn-active">
+                                    MORE INFO 
+                                    <i class="fa fa-chevron-right fa-rotate-270"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="pt-3">
+                            <div class="h4 font-weight-sbold">
+                                <i class="fa fa-bar-chart"></i> Balances
+                            </div>
+                            <div class="row">
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">BITTREX</div>
+                                    <div class="h6 font-weight-sbold">3000</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Poloniex</div>
+                                    <div class="h6 font-weight-sbold">4790</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Binance</div>
+                                    <div class="h6 font-weight-sbold">5215</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Bittfinex</div>
+                                    <div class="h6 font-weight-sbold">3240</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Liqui</div>
+                                    <div class="h6 font-weight-sbold">6080</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="logo">
+                            <img src="img/bat.png" alt="">
+                        </div>
+                        <div class="setting">
+                            <span>settings</span>
+                            <i class="fa fa-cog"></i>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-2">
+                                <div class="label">TOKEN</div>
+                                <div class="value">KNC</div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="label">
+                                    <span class="mr-auto">current reserve qty</span>
+                                    <span class="text-secondary">target</span>
+                                </div>
+                                <div class="value">
+                                    <span class="mr-auto">6953</span>
+                                    <small>/ 98563</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="label">
+                                    <span class="mr-auto">current reserve qty</span>
+                                    <span class="text-secondary">target</span>
+                                </div>
+                                <div class="value">
+                                    <span class="mr-auto">6953</span>
+                                    <small>/ 98563</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="label">&nbsp;</div>
+                                <div class="value value-progress">40%</div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-bat" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 col-md-8">
+                                <div class=" table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr class="text-secondary text-uppercase">
+                                                <th>Rate</th>
+                                                <th>Symbol</th>
+                                                <th>ASk</th>
+                                                <th>BId</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Reserve</td>
+                                                <td>KNC/ETH</td>
+                                                <td>0.7697399673695822</td>
+                                                <td>0.8697399673695822</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 text-right">
+                                <button class="btn btn-default">
+                                    MORE INFO 
+                                    <i class="fa fa-chevron-right fa-rotate-90"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <hr class="d-none">
+                        <div class="pt-3 d-none">
+                            <div class="h4 font-weight-sbold">
+                                <img src="img/chart.png" class="align-baseline" alt=""> Balances
+                            </div>
+                            <div class="row">
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">BITTREX</div>
+                                    <div class="h6 font-weight-sbold">3000</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Poloniex</div>
+                                    <div class="h6 font-weight-sbold">4790</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Binance</div>
+                                    <div class="h6 font-weight-sbold">5215</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Bittfinex</div>
+                                    <div class="h6 font-weight-sbold">3240</div>
+                                </div>
+                                <div class="col-4 col-sm-3 col-md">
+                                    <div class="text-uppercase text-secondary my-3">Liqui</div>
+                                    <div class="h6 font-weight-sbold">6080</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+
+</html>
