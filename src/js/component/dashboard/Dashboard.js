@@ -30,7 +30,7 @@ class Dashboard extends Component {
                 <div>
                     <div className="container py-5">
                         <div className="page-title">
-                            <img src="assets/img/dashboard.png" alt="" />
+                            <img src="/img/dashboard.png" alt="" />
                             <h5 className="title py-2">Kyber Reserve</h5>
                         </div>
 

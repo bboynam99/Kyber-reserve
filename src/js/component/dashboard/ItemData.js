@@ -30,9 +30,9 @@ const ItemData = (props) => {
                 </div>
             </div>
             <div className="col-12 col-md-4 text-right">
-                <button className="btn btn-kprimary btn-active">
+                <button className="btn btn-kprimary">
                     MORE INFO
-                        <i className="fa fa-chevron-right fa-rotate-270"></i>
+                    <i className="fa fa-chevron-right fa-rotate-270"></i>
                 </button>
             </div>
         </div>

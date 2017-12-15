@@ -4,7 +4,7 @@ const ItemHead = (props) => {
     return (
         <div>
             <div className="logo">
-                <img src="assets/img/knc.png" alt="" />
+                <img src="/img/knc.png" alt="" />
             </div>
             <div className="setting">
                 <span>settings</span>

@@ -16,7 +16,7 @@ class Header extends Component {
                 <div className="container">
                     <nav className="navbar navbar-expand-lg navbar-light px-0">
                         <a className="navbar-brand" href="">
-                            <img src="/assets/img/logo.png" alt="" />
+                            <img src="/img/logo.png" alt="" />
                         </a>
                         <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarToggler">
                             <span className="navbar-toggler-icon"></span>
