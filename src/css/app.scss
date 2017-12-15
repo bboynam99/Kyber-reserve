@@ -30,6 +30,7 @@ section{
         background-image: url(../img/bg-waves.svg);
         background-repeat: no-repeat;
         background-size: contain;
+        min-height: calc(100vh - 80px);
     }
     .page-title{
         img{
