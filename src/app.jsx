@@ -1,16 +1,16 @@
 import React from 'react';
-import Navigation from './components/Navigation';
+import { Header } from './components/Header'
+import { TokenInfo } from './components/TokenInfo'
+
 import 'normalize.css';
 import './assets/css/app.scss';
 
+
 const App = () => (
-  <div className='App'>
-    <Navigation/>
-    <div>
-      <h1>It Works!</h1>
-      <p>This React project just works including <span className="redBg">module</span> local styles.</p>
-      <p>Enjoy!</p>
-    </div>
+  <div>
+    <Header/>
+
+    <TokenInfo/>
   </div>
 );
 
