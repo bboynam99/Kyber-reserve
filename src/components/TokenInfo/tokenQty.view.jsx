@@ -1,10 +1,12 @@
 import React from 'react';
 
+import logo from "../../assets/img/knc.png"
+
 const TokenQtyView = ({data}) => {
   return (
     <div>
       <div className="logo">
-        <img src="/img/knc.png" alt="" />
+        <img src={logo} alt="" />
       </div>
       <div className="setting">
         <span>settings</span>
