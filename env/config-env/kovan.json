@@ -1,0 +1,7 @@
+{
+  "connection": {
+    "name": "kovan",
+    "http": "http://52.77.19.90:8000/",
+    "ws": ""
+  }
+}

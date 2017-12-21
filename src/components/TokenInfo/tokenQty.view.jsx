@@ -1,12 +1,12 @@
 import React from 'react';
 
-import logo from "../../assets/img/knc.png"
+import BLOCKCHAIN_INFO from "../../../env"
 
 const TokenQtyView = ({data}) => {
   return (
     <div>
       <div className="logo">
-        <img src={logo} alt="" />
+        <img src={require("../../assets/img/knc.png")} alt="" />
       </div>
       <div className="setting">
         <span>settings</span>

@@ -5,9 +5,9 @@
   "main": "''",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --colors",
-    "start": "webpack-dev-server --progress --colors",
+    "start": "webpack-dev-server --progress --colors --env.chain=mainnet",
     "lint": "eslint --ext js --ext jsx src || exit 0",
-    "dev": " webpack-dashboard -- webpack-dev-server",
+    "dev": " webpack-dashboard -- webpack-dev-server --env.chain=kovan",
     "test": "export NODE_ENV=test && jest"
   },
   "repository": {
