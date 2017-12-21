@@ -1,12 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {AppContainer} from 'react-hot-loader'
+import { AppContainer } from 'react-hot-loader'
 import Routes from './routes'
+import { PersistGate } from 'redux-persist/lib/integration/react'
+import { Provider } from "react-redux"
+import { persistor, store } from "./store"
 
 ReactDOM.render(
-  <AppContainer>
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
       <Routes />
-  </AppContainer>,
+    </Provider>
+  </PersistGate>,
+
+  // <AppContainer>
+  //     <Routes />
+  // </AppContainer>,
   document.getElementById('app')
 );
 
@@ -15,9 +24,15 @@ if (module.hot) {
   module.hot.accept('./app', () => {
     const NextApp = require('./app').default;
     ReactDOM.render(
-      <AppContainer>
-        <NextApp/>
-      </AppContainer>,
+      <PersistGate persistor={persistor}>
+        <Provider store={store}>
+          <NextApp />
+        </Provider>
+      </PersistGate>,
+
+      // <AppContainer>
+      //   <NextApp/>
+      // </AppContainer>,
       document.getElementById('app')
     );
   });

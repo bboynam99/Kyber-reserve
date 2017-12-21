@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // import ItemBalances from './ItemBalances';
 // import * as api from '../../api/getData';
 import TokenInfoView from "./tokenInfo.view"
+import ApiService from "../../services/Connection/api.service"
 
 class TokenInfo extends Component {
   constructor() {
