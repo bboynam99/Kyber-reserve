@@ -26,6 +26,7 @@ class TokenInfo extends Component {
   }
 
   componentDidMount(){
+    
     this.tokensService.syncAll(this.props.apiService).then((tokens) => {
       this.setState({data: tokens})
     })    

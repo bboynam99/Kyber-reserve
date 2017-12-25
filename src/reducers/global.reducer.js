@@ -12,8 +12,6 @@ const global = (state = initState, action) => {
   switch (action.type) {
     case REHYDRATE: {
       if (action.key === "global") {
-        console.log("========================")
-        console.log(initState)
         return initState;
       } else {
         return state
