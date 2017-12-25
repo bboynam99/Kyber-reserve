@@ -14,14 +14,13 @@ const TokenInfoView = ({data}) => {
             <img src={logo} alt="" />
             <h5 className="title py-2">Kyber Reserve</h5>
           </div>
-
           <ul className="reserves pt-md-5">
-            {data.map((item, i) =>
+            {Object.keys(data).map((tokenSymbol, i) =>
               <li key={i}>
-                <TokenQtyView data={item} />
-                <TokenRateView data={item} />
+                <TokenQtyView data={data[tokenSymbol]}/>
+                <TokenRateView data={data[tokenSymbol]} />
                 <hr />
-                <TokenBalanceView data={item} />
+                <TokenBalanceView data={data[tokenSymbol]} />
               </li>
             )}
           </ul>

@@ -24,13 +24,13 @@ const wsEndpoint = "ws://52.77.19.90:8000/"
 
 
 export default class Provider extends React.Component {
-  constructor(type){
+  constructor(type) {
     super(type)
     this.initProvider(type)
   }
 
-  initProvider(type){
-    switch(type){
+  initProvider(type) {
+    switch (type) {
       case "http":
         this.currentProvider = "http"
         break
@@ -44,41 +44,41 @@ export default class Provider extends React.Component {
   }
 
 
-  send(path, method, data){
-    return new Promise((resolve, reject) => {
-      if(this.currentProvider == "http"){
-        this.httpRequest(httpEndpoint + path, method, data)
-          .then((data) => { resolve(data)})
-          .catch((err) => { reject(err)})
-      } 
-      
-      else if(this.currentProvider == "ws"){
-        this.wsSend(wsEndpoint + path, data)
-        .then((data) => { resolve(data)})
-        .catch((err) => { reject(err)})
-      }
+  send(path, method, data) {
+    // return new Promise((resolve, reject) => {
+    if (this.currentProvider == "http") {
+      return this.httpRequest(httpEndpoint + path, method, data)
+    }
 
-      else {
-        reject("provider not support")
-      }
+    else if (this.currentProvider == "ws") {
+      return this.wsSend(wsEndpoint + path, data)
+    }
 
-    })
+    else {
+      return Promise.reject("provider not support")
+    }
   }
 
-  httpRequest(url, method, data){
-    var requestData = method == "POST" ? { method: "POST", body: data} : null
+  httpRequest(url, method, data) {
+    var requestData = method == "POST" ? { method: "POST", body: data } : {}
     return new Promise((resolve, reject) => {
       fetch(url, requestData)
-      .then((data) => {
-        resolve(data)
-      })
-      .catch((err) => {
-        reject(err)
-      })
+        .then((response) => {
+          if (!response.ok) {
+            reject(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resolve(data)
+        })
+        .catch((err) => {
+          reject(err)
+        })
     })
   }
 
-  wsSend(url, data){
+  wsSend(url, data) {
     return new Promise((resolve, reject) => {
       const ws = new WebSocket('ws://' + url)
       ws.on('open', function open() {

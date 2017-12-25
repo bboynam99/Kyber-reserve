@@ -1,8 +1,27 @@
-const initState = {
-}
+import { REHYDRATE } from 'redux-persist/lib/constants'
+import ApiService from "../services/Connection/api.service"
+
+const initState = function(){
+  let apiService = new ApiService();
+  return {
+    apiService: apiService
+  }
+}()
 
 const global = (state = initState, action) => {
-  return state
+  switch (action.type) {
+    case REHYDRATE: {
+      if (action.key === "global") {
+        console.log("========================")
+        console.log(initState)
+        return initState;
+      } else {
+        return state
+      }
+    }
+    default: return state
+  }
+  
 }
 
 export default global

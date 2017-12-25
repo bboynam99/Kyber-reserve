@@ -18,7 +18,7 @@ const routeMiddleware = routerMiddleware(history)
 
 const middleware = applyMiddleware(
   // sagaMiddleware,
-  // logger,
+  logger,
   routeMiddleware,
 )
 
