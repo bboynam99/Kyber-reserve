@@ -1,12 +1,13 @@
 
+import { mappingTokenRate, mappingTokenBalance, mappingQty } from "./standardize"
 
 export default class Token {
   constructor(
     info,
     persent = 0,
-    qty = 0,
-    rates = 0,
-    balances = 0
+    qty = mappingQty(null),
+    rates = mappingTokenRate(null, 0),
+    balances = mappingTokenBalance(null)
   ){
     this.info = info
     this.persent = persent

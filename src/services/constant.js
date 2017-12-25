@@ -79,7 +79,25 @@ const SUPPORTED_TOKENS = {
   }
 }
 
+const SUPPORTED_EXCHANGE = {
+  BITTREX: {
+    name: "Bittrex"
+  },
+  POLONIEX: {
+    name: "Poloniex"
+  },
+  BINANCE: {
+    name: "Binance"
+  },
+  BITTFINEX: {
+    name: "Bittfinex"
+  },
+  LIQUI: {
+    name: "Liqui"
+  }
+}
+
 
 module.exports = {
-  SUPPORTED_TOKENS, PATH
+  SUPPORTED_TOKENS, PATH, SUPPORTED_EXCHANGE
 }

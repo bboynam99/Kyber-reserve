@@ -16,7 +16,10 @@ export default class TokensService {
                                           this.getAllBalance(service),
                                           this.getAllQty(service)
                                         ])
-
+    console.log("+++++++++++++++++++++++++++")
+    console.log(allRate)
+    console.log(allBalance)
+    console.log(allQty)
 
     if(allRate && allRate.data && allRate.success){
       Object.keys(allRate.data).forEach((pair) => {

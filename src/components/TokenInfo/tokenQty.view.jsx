@@ -15,7 +15,7 @@ const TokenQtyView = ({data}) => {
       <div className="row">
         <div className="col-6 col-md-2">
           <div className="label">TOKEN</div>
-          <div className="value">{data.info.name}</div>
+          <div className="value">{data.info.symbol}</div>
         </div>
         <div className="col-6 col-md-3">
           <div className="label">

@@ -1,3 +1,4 @@
+import CONSTANT from "./constant"
 
 export function mappingTokenRate(token, data){
   if(data && typeof data == 'object'){
@@ -17,13 +18,20 @@ export function mappingTokenRate(token, data){
 }
 
 export function mappingTokenBalance(data){
-  if(data && typeof data == 'object'){
-    return { exchange: 'Bittrex', value: data.Balance }
-  }
+  return Object.keys(CONSTANT.SUPPORTED_EXCHANGE).map(exchangeName => {
+    let tokenValue = data && typeof data == 'object' && data.Balance ? data.Balance : 0
+
+    return { 
+      exchange: CONSTANT.SUPPORTED_EXCHANGE[exchangeName].name,
+      value: tokenValue
+    }
+  })
 }
 
 export function mappingQty(data){
   if(data && typeof data == 'object'){
     return {current: data.current, target: data.target}
+  } else {
+    return {current: 0, target: 0}
   }
 }
