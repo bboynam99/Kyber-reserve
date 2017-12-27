@@ -64,9 +64,9 @@ export function mappingAllExchangeBalance(data){
     Object.keys(CONSTANT.SUPPORTED_EXCHANGE).map(exchangeSymbol => {
       let exchangeName = CONSTANT.SUPPORTED_EXCHANGE[exchangeSymbol].name
       tokenBalanceObj[exchangeSymbol] = {
-        AvailableBalance: data[exchangeName] ? data[exchangeName].AvailableBalance[tokenSymbol] : 0,
-        DepositBalance: data[exchangeName] ? data[exchangeName].DepositBalance[tokenSymbol] : 0,
-        LockedBalance: data[exchangeName] ? data[exchangeName].LockedBalance[tokenSymbol] : 0
+        AvailableBalance: data[exchangeName] && data[exchangeName].AvailableBalance[tokenSymbol] ? data[exchangeName].AvailableBalance[tokenSymbol] : 0,
+        DepositBalance: data[exchangeName] && data[exchangeName].DepositBalance[tokenSymbol] ? data[exchangeName].DepositBalance[tokenSymbol] : 0,
+        LockedBalance: data[exchangeName] && data[exchangeName].LockedBalance[tokenSymbol] ? data[exchangeName].LockedBalance[tokenSymbol] : 0
       }
     })
     returnObj[tokenSymbol] = tokenBalanceObj
