@@ -35,3 +35,51 @@ export function mappingQty(data){
     return {current: 0, target: 0}
   }
 }
+
+export function mappingAllRate(data){
+  let returnObj = {}
+
+  Object.keys(data).map((pair) => {
+    let tokenSymbol = pair.split('-')[0]
+    let pairData = data[pair]
+
+    returnObj[tokenSymbol] = Object.keys(pairData).map((exchangeName) => (
+      {
+        exchange: exchangeName,
+        symbol: tokenSymbol + "/ETH",
+        ask: pairData[exchangeName].Asks[0],
+        bid: pairData[exchangeName].Bids[0]
+      }
+    ))
+  })
+
+  return returnObj
+}
+
+export function mappingAllExchangeBalance(data){
+  let returnObj = {}
+  
+  Object.keys(CONSTANT.SUPPORTED_TOKENS).map((tokenSymbol) => {
+    let tokenBalanceObj = {}
+    Object.keys(CONSTANT.SUPPORTED_EXCHANGE).map(exchangeSymbol => {
+      let exchangeName = CONSTANT.SUPPORTED_EXCHANGE[exchangeSymbol].name
+      tokenBalanceObj[exchangeSymbol] = {
+        AvailableBalance: data[exchangeName] ? data[exchangeName].AvailableBalance[tokenSymbol] : 0,
+        DepositBalance: data[exchangeName] ? data[exchangeName].DepositBalance[tokenSymbol] : 0,
+        LockedBalance: data[exchangeName] ? data[exchangeName].LockedBalance[tokenSymbol] : 0
+      }
+    })
+    returnObj[tokenSymbol] = tokenBalanceObj
+  })
+
+  return returnObj
+}
+
+export function mappingAllReserveBalance(data){
+  let returnObj = {}
+  Object.keys(CONSTANT.SUPPORTED_TOKENS).map((tokenSymbol) => {
+    returnObj[tokenSymbol] = data[tokenSymbol].Balance ? data[tokenSymbol].Balance : 0
+  })
+
+  return returnObj
+}

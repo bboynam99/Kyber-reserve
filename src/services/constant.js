@@ -81,23 +81,32 @@ const SUPPORTED_TOKENS = {
 
 const SUPPORTED_EXCHANGE = {
   BITTREX: {
-    name: "Bittrex"
+    name: "bittrex"
   },
   POLONIEX: {
-    name: "Poloniex"
+    name: "poloniex"
   },
   BINANCE: {
-    name: "Binance"
+    name: "binance"
   },
   BITTFINEX: {
-    name: "Bittfinex"
+    name: "bittfinex"
   },
   LIQUI: {
-    name: "Liqui"
+    name: "liqui"
   }
 }
 
+const INNIT_TOKEN_RATES = []
+
+const INNIT_TOKEN_EXCHANGE_BALANCE = {
+}
+
+const INNIT_TOKEN_RESERVE_BALANCE = 0
+
 
 module.exports = {
-  SUPPORTED_TOKENS, PATH, SUPPORTED_EXCHANGE
+  SUPPORTED_TOKENS, PATH, SUPPORTED_EXCHANGE, 
+  INNIT_TOKEN_RATES, INNIT_TOKEN_EXCHANGE_BALANCE, 
+  INNIT_TOKEN_RESERVE_BALANCE
 }

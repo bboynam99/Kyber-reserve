@@ -23,8 +23,8 @@ const TokenQtyView = ({data}) => {
             <span className="text-secondary">target</span>
           </div>
           <div className="value">
-            <span className="mr-auto">{data.qty.current}</span>
-            <small>/ {data.qty.target}</small>
+            <span className="mr-auto">{data.reserveBalance}</span>
+            <small>/ {data.reserveTarget}</small>
           </div>
         </div>
         <div className="col-6 col-md-3">
@@ -33,8 +33,8 @@ const TokenQtyView = ({data}) => {
             <span className="text-secondary">target</span>
           </div>
           <div className="value">
-            <span className="mr-auto">{data.qty.current}</span>
-            <small>/ {data.qty.target}</small>
+            <span className="mr-auto">{data.totalQty}</span>
+            <small>/ {data.totalTarget}</small>
           </div>
         </div>
         <div className="col-6 col-md-4">

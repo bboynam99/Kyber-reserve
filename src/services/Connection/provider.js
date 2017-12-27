@@ -45,7 +45,6 @@ export default class Provider extends React.Component {
 
 
   send(path, method, data) {
-    // return new Promise((resolve, reject) => {
     if (this.currentProvider == "http") {
       return this.httpRequest(httpEndpoint + path, method, data)
     }

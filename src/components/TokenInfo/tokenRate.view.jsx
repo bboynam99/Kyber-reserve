@@ -17,10 +17,10 @@ const TokenRateView = ({ data }) => {
 						{data.rates ? data.rates.map((rate, k) =>
 							<tbody key={k}>
 								<tr>
-									<td>{rate.rate}</td>
+									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
-									<td>{rate.ask}</td>
-									<td>{rate.bid}</td>
+									<td>{rate.ask.Quantity * rate.ask.Rate}</td>
+									<td>{rate.bid.Quantity * rate.bid.Rate}</td>
 								</tr>
 							</tbody>
 						) : <tbody>
