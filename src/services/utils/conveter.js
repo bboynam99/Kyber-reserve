@@ -25,6 +25,14 @@ export function roundingNumber(number, maxDigis = 7, size = 3) {
   return result;
 }
 
-export function roundingBigNumber(bignumber) {
-  
-}
+export function flatten(object){
+  return Object.assign( {}, ...function _flatten( objectBit, path = '' ) {  
+    return [].concat(                                                       
+      ...Object.keys( objectBit ).map(                                     
+        key => typeof objectBit[ key ] === 'object' ?                       
+          _flatten( objectBit[ key ], `${ path }/${ key }` ) :              
+          ( { [ `${ path }/${ key }` ]: objectBit[ key ] } )                
+      )
+    )
+  }( object ) );
+};

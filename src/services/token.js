@@ -1,6 +1,7 @@
 
 import { mappingTokenRate, mappingTokenBalance, mappingQty } from "./utils/standardize"
 import CONSTANT from "./constant"
+import { flatten } from "./utils/conveter"
 
 export default class Token {
   constructor(
@@ -42,7 +43,9 @@ export default class Token {
   }
 
   caculateTotalBalance(balances){
-    return 0
+    let flattenBalances = flatten(this.exchangeBalance)
+    let sumExchange = Object.values(flattenBalances).reduce((a, b) => a + b, 0)
+    return sumExchange + this.reserveBalance
   }
 
 }
