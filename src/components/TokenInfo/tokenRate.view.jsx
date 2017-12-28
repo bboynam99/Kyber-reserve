@@ -9,10 +9,10 @@ const TokenRateView = ({ data, showMore}) => {
 					<table className="table">
 						<thead>
 							<tr className="text-secondary text-uppercase">
-								<th>Rate</th>
-								<th>Symbol</th>
-								<th>ASk</th>
-								<th>BId</th>
+								<th className="w-25">Rate</th>
+								<th className="w-25">Symbol</th>
+								<th className="w-25">ASk</th>
+								<th className="w-25">BId</th>
 							</tr>
 						</thead>
 						{data.rates ? data.rates.map((rate, k) =>
