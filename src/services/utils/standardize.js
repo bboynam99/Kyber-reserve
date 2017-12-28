@@ -54,6 +54,7 @@ export function mappingAllRate(data){
     ))
   })
 
+  console.log(returnObj)
   return returnObj
 }
 
@@ -73,6 +74,19 @@ export function mappingAllExchangeBalance(data){
     returnObj[tokenSymbol] = tokenBalanceObj
   })
 
+  // ADX{
+  //   BINANCE: {
+  //     AvailableBalance: 0
+  //     DepositBalance: 0
+  //     LockedBalance: 0
+  //   },
+  //   BITTFINEX: {...},
+  //   BITTREX: {...},
+  //   LIQUI: {...},
+  //   POLONIEX: {..}
+  // }
+  // ...
+  
   return returnObj
 }
 
@@ -82,5 +96,10 @@ export function mappingAllReserveBalance(data){
     returnObj[tokenSymbol] = data[tokenSymbol].Balance ? data[tokenSymbol].Balance : 0
   })
 
+  // {
+  //   ADX: 0,
+  //   BAT: 0,
+  //   ...
+  // }
   return returnObj
 }

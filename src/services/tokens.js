@@ -29,8 +29,6 @@ export default class TokensService {
       this.getAllBalance(service)
     ])
 
-
-
     let mappedAllRate = mappingAllRate(allRate.data)
 
     let mappedAllExchangeBalance = mappingAllExchangeBalance(allBalance.data.ExchangeBalances)
