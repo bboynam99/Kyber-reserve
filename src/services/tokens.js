@@ -1,7 +1,7 @@
 import Token from "./token"
 import CONSTANT from "./constant"
 import { mappingTokenRate, mappingTokenBalance, mappingQty, 
-  mappingAllRate, mappingAllExchangeBalance, mappingAllReserveBalance} from "./standardize"
+  mappingAllRate, mappingAllExchangeBalance, mappingAllReserveBalance} from "./utils/standardize"
 
 export default class TokensService {
   constructor() {
@@ -23,40 +23,13 @@ export default class TokensService {
     return service.getAuthData()
   }
 
-  // getAllQty(service) {
-  //   return service.getAllQty()
-  // }
-
   async syncAll(service) {
     let [allRate, allBalance] = await Promise.all([
       this.getAllRate(service),
-      this.getAllBalance(service),
-      // this.getAllQty(service)
+      this.getAllBalance(service)
     ])
 
-    // if (allRate && allRate.data && allRate.success) {
-    //   Object.keys(allRate.data).forEach((pair) => {
-    //     let tokenSymbol = pair.split('-')[0]
-    //     if (tokenSymbol && this.tokens[tokenSymbol]) {
-    //       let mappedRate = mappingTokenRate(tokenSymbol, allRate.data[pair])
-    //       this.tokens[tokenSymbol].setRates(mappedRate)
-    //     }
-    //   })
-    // }
 
-    // if (allBalance && allBalance.data && allBalance.success) {
-    //   Object.keys(allBalance.data).forEach((tokenSymbol) => {
-    //     let mappedBalance = mappingTokenBalance(allBalance.data[tokenSymbol])
-    //     this.tokens[tokenSymbol].setBalance(mappedBalance)
-    //   })
-    // }
-
-    // if (allQty && allQty.data && allQty.success) {
-    //   Object.keys(allQty.data).forEach((tokenSymbol) => {
-    //     let mappedQty = mappingQty(allQty.data[tokenSymbol])
-    //     this.tokens[tokenSymbol].setQty(mappedQty)
-    //   })
-    // }
 
     let mappedAllRate = mappingAllRate(allRate.data)
 

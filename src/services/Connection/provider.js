@@ -58,6 +58,10 @@ export default class Provider extends React.Component {
     }
   }
 
+  sendBlockchain(){
+
+  }
+
   httpRequest(url, method, data) {
     var requestData = method == "POST" ? { method: "POST", body: data } : {}
     return new Promise((resolve, reject) => {

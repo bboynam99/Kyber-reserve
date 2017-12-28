@@ -1,4 +1,5 @@
 import React from 'react';
+import { roundingNumber } from "../../services/utils/conveter"
 
 const TokenRateView = ({ data }) => {
 	return (
@@ -19,8 +20,8 @@ const TokenRateView = ({ data }) => {
 								<tr>
 									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
-									<td>{rate.ask.Quantity * rate.ask.Rate}</td>
-									<td>{rate.bid.Quantity * rate.bid.Rate}</td>
+									<td>{roundingNumber(rate.ask.Quantity * rate.ask.Rate)}</td>
+									<td>{roundingNumber(rate.bid.Quantity * rate.bid.Rate)}</td>
 								</tr>
 							</tbody>
 						) : <tbody>

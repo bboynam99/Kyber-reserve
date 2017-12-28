@@ -10,6 +10,8 @@ import TokensService from "../../services/tokens"
 
 import ReactDOM from "react-dom"
 
+import BigNumber from 'bignumber.js'
+
 @connect((store) => {
   const apiService = store.global.apiService
   return { apiService }
@@ -35,6 +37,8 @@ class TokenInfo extends Component {
     this.tokensService.syncAll(this.props.apiService).then((tokens) => {
       this.setState({data: tokens})
     })  
+
+    // console.log(new BigNumber('827198371982.17298371293791827398217').toFormat(2))
   }
 
   render(){

@@ -1,5 +1,5 @@
 
-import { mappingTokenRate, mappingTokenBalance, mappingQty } from "./standardize"
+import { mappingTokenRate, mappingTokenBalance, mappingQty } from "./utils/standardize"
 import CONSTANT from "./constant"
 
 export default class Token {

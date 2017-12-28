@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BLOCKCHAIN_INFO from "../../../env"
+import { roundingNumber } from "../../services/utils/conveter"
 
 const TokenQtyView = ({data}) => {
   return (
@@ -23,8 +24,8 @@ const TokenQtyView = ({data}) => {
             <span className="text-secondary">target</span>
           </div>
           <div className="value">
-            <span className="mr-auto">{data.reserveBalance}</span>
-            <small>/ {data.reserveTarget}</small>
+            <span className="mr-auto">{roundingNumber(data.reserveBalance)}</span>
+            <small>/ {roundingNumber(data.reserveTarget)}</small>
           </div>
         </div>
         <div className="col-6 col-md-3">
@@ -33,8 +34,8 @@ const TokenQtyView = ({data}) => {
             <span className="text-secondary">target</span>
           </div>
           <div className="value">
-            <span className="mr-auto">{data.totalQty}</span>
-            <small>/ {data.totalTarget}</small>
+            <span className="mr-auto">{roundingNumber(data.totalQty)}</span>
+            <small>/ {roundingNumber(data.totalTarget)}</small>
           </div>
         </div>
         <div className="col-6 col-md-4">
