@@ -5,8 +5,7 @@ const TokenBalanceView = ({ data }) => {
   return (
     <div className="pt-3">
       <div className="h4 font-weight-sbold">
-        <i className="fa fa-bar-chart"></i> Balances
-                                    </div>
+        <i className="fa fa-bar-chart"></i> Balances</div>
       <div className="row">
         {data.exchangeBalance ? Object.keys(data.exchangeBalance).map((exchangeName, i) =>
           <div className="col-4 col-sm-3 col-md" key={i}>

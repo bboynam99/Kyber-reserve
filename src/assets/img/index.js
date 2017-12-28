@@ -1,0 +1,15 @@
+const ADX = require("./adx.svg")
+const BAT = require("./bat.svg")
+const CVC = require("./cvc.svg")
+const DGD = require("./dgd.svg")
+const EOS = require("./eos.svg")
+const ETH = require("./eth.svg")
+const FUN = require("./fun.svg")
+const GNT = require("./gnt.svg")
+const KNC = require("./knc.svg")
+const LINK = require("./link.svg")
+const MCO = require("./mco.svg")
+const OMG = require("./omg.svg")
+const PAY = require("./pay.svg")
+
+export default { ADX, BAT, CVC, DGD, EOS, ETH, FUN, GNT, KNC, LINK, MCO, OMG, PAY }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { roundingNumber } from "../../services/utils/conveter"
 
-const TokenRateView = ({ data }) => {
+const TokenRateView = ({ data, showMore}) => {
 	return (
 		<div className="row mt-5">
 			<div className="col-12 col-md-8">
@@ -16,7 +16,7 @@ const TokenRateView = ({ data }) => {
 							</tr>
 						</thead>
 						{data.rates ? data.rates.map((rate, k) =>
-							<tbody key={k}>
+							<tbody key={k} className={showMore || k < 1 ? "" : "d-none"}>
 								<tr>
 									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
@@ -32,12 +32,12 @@ const TokenRateView = ({ data }) => {
 					</table>
 				</div>
 			</div>
-			<div className="col-12 col-md-4 text-right">
+			{/* <div className="col-12 col-md-4 text-right">
 				<button className="btn btn-kprimary">
 					MORE INFO
 										<i className="fa fa-chevron-right fa-rotate-270"></i>
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 }

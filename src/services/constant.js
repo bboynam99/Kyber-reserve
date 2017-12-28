@@ -15,67 +15,67 @@ const SUPPORTED_TOKENS = {
   ETH: {
     name: "Ethereum",
     symbol: "ETH",
-    icon: "/assets/img/tokens/eth.svg"
+    icon: "eth.svg"
   },
   KNC: {
     name: "KyberNetwork",
     symbol: "KNC",
-    icon: "/assets/img/tokens/knc.svg"
+    icon: "knc.svg"
   },
   OMG: {
     name: "OmiseGO",
     symbol: "OMG",
-    icon: "/assets/img/tokens/omg.svg"
+    icon: "omg.svg"
   },
   DGD: {
     name: "Digix",
     symbol: "DGD",
-    icon: "/assets/img/tokens/dgd.svg"
+    icon: "dgd.svg"
   },
   CVC: {
     name: "Civic",
     symbol: "CVC",
-    icon: "/assets/img/tokens/cvc.svg"
+    icon: "cvc.svg"
   },
   FUN: {
     name: "FunFair",
     symbol: "FUN",
-    icon: "/assets/img/tokens/fun.svg"
+    icon: "fun.svg"
   },
   MCO: {
     name: "Monaco",
     symbol: "MCO",
-    icon: "/assets/img/tokens/mco.svg"
+    icon: "mco.svg"
   },
   GNT: {
     name: "Golem",
     symbol: "GNT",
-    icon: "/assets/img/tokens/gnt.svg"
+    icon: "gnt.svg"
   },
   ADX: {
     name: "Adex",
     symbol: "ADX",
-    icon: "/assets/img/tokens/adx.svg"
+    icon: "adx.svg"
   },
   PAY: {
     name: "TenX",
     symbol: "PAY",
-    icon: "/assets/img/tokens/pay.svg"
+    icon: "pay.svg"
   },
   BAT: {
     name: "BasicAttention",
     symbol: "BAT",
-    icon: "/assets/img/tokens/bat.svg"
+    icon: "bat.svg"
   },
   EOS: {
     name: "Eos",
     symbol: "EOS",
-    icon: "/assets/img/tokens/eos.svg"
+    icon: "eos.svg"
   },
   LINK: {
     name: "ChainLink",
     symbol: "LINK",
-    icon: "/assets/img/tokens/link.svg"
+    icon: "link.svg"
   }
 }
 

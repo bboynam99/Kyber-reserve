@@ -1,6 +1,6 @@
 import CONSTANT from "../constant"
 import BigNumber from "bignumber.js"
-import { roundingBigNumber } from "./conveter"
+
 export function mappingTokenRate(token, data){
   if(data && typeof data == 'object'){
     let returnData = []       // array[{rate: 'Reserve', symbol: 'KNC/ETH', ask: (0.7697399673695822), bid: 0.8697399673695822}]
@@ -54,7 +54,6 @@ export function mappingAllRate(data){
     ))
   })
 
-  console.log(returnObj)
   return returnObj
 }
 

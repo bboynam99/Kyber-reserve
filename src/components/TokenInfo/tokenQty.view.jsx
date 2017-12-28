@@ -3,11 +3,13 @@ import React from 'react';
 import BLOCKCHAIN_INFO from "../../../env"
 import { roundingNumber } from "../../services/utils/conveter"
 
+import IMAGE_ICON from "../../assets/img"
+
 const TokenQtyView = ({data}) => {
   return (
     <div>
       <div className="logo">
-        <img src={require("../../assets/img/knc.png")} alt="" />
+        <img src={IMAGE_ICON[data.info.symbol]} alt="" />
       </div>
       <div className="setting">
         <span>settings</span>
@@ -40,7 +42,7 @@ const TokenQtyView = ({data}) => {
         </div>
         <div className="col-6 col-md-4">
           <div className="label">&nbsp;</div>
-          <div className="value value-progress">{data.percent}%</div>
+          <div className="value value-progress">{data.persent}%</div>
           <div className="progress">
             <div className="progress-bar bg-knc" style={{ width: data.percent + "%" }}></div>
           </div>

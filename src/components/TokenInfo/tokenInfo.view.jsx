@@ -5,7 +5,7 @@ import TokenRateView from "./tokenRate.view"
 
 import logo from "../../assets/img/dashboard.png"
 
-const TokenInfoView = ({data}) => {
+const TokenInfoView = ({ data, moreInfo, toggleShowMore }) => {
   return (
     <section>
       <div>
@@ -17,10 +17,20 @@ const TokenInfoView = ({data}) => {
           <ul className="reserves pt-md-5">
             {Object.keys(data).map((tokenSymbol, i) =>
               <li key={i}>
-                <TokenQtyView data={data[tokenSymbol]}/>
-                <TokenRateView data={data[tokenSymbol]} />
-                <hr />
-                <TokenBalanceView data={data[tokenSymbol]} />
+                <TokenQtyView data={data[tokenSymbol]} />
+                <div className="more-info-btn text-right">
+                  <button className={moreInfo[tokenSymbol] ? "btn btn-kprimary" : "btn"} onClick={() => toggleShowMore(tokenSymbol)}>
+                    MORE INFO
+										<i className="fa fa-chevron-right fa-rotate-270"></i>
+                  </button>
+                </div>
+                <TokenRateView data={data[tokenSymbol]} showMore={moreInfo[tokenSymbol]} />
+                {moreInfo[tokenSymbol] &&
+                  <div>
+                    <hr />
+                    <TokenBalanceView data={data[tokenSymbol]} />
+                  </div>
+                }
               </li>
             )}
           </ul>

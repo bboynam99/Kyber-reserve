@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-// import ItemHead from './ItemHead';
-// import ItemData from './ItemData';
-// import ItemBalances from './ItemBalances';
-// import * as api from '../../api/getData';
 import TokenInfoView from "./tokenInfo.view"
 import ApiService from "../../services/Connection/api.service"
 import TokensService from "../../services/tokens"
 
-import ReactDOM from "react-dom"
-
-import BigNumber from 'bignumber.js'
+// import ReactDOM from "react-dom"
 
 @connect((store) => {
   const apiService = store.global.apiService
@@ -24,7 +18,7 @@ class TokenInfo extends Component {
     this.tokensService = new TokensService()
     this.state = {
       data: {},
-      abc: true
+      moreInfo: {}
     }
     
   }
@@ -36,17 +30,24 @@ class TokenInfo extends Component {
   componentDidMount(){
     this.tokensService.syncAll(this.props.apiService).then((tokens) => {
       this.setState({data: tokens})
-    })  
+    })
+  }
 
-    // console.log(new BigNumber('827198371982.17298371293791827398217').toFormat(2))
+  toggleShowMore = (tokenSymbol) => {
+    this.setState((prevState, props) => {
+      prevState.moreInfo[tokenSymbol] = !prevState.moreInfo[tokenSymbol]
+      return {
+        moreInfo: {...prevState.moreInfo}
+      }
+    })
   }
 
   render(){
     let renderView = <TokenInfoView 
                       data={this.state.data}
+                      moreInfo={this.state.moreInfo}
+                      toggleShowMore={this.toggleShowMore}
                       />
-    console.log("*&&&&&&&&&&&&&&&&&&&*&*&*&*")
-    console.log(renderView)
     return renderView
   }
 }
