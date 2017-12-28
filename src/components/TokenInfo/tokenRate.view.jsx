@@ -20,8 +20,8 @@ const TokenRateView = ({ data, showMore}) => {
 								<tr>
 									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
-									<td>{roundingNumber(rate.ask.Quantity * rate.ask.Rate)}</td>
-									<td>{roundingNumber(rate.bid.Quantity * rate.bid.Rate)}</td>
+									<td title={rate.ask.Quantity * rate.ask.Rate}>{roundingNumber(rate.ask.Quantity * rate.ask.Rate)}</td>
+									<td title={rate.bid.Quantity * rate.bid.Rate}>{roundingNumber(rate.bid.Quantity * rate.bid.Rate)}</td>
 								</tr>
 							</tbody>
 						) : <tbody>
