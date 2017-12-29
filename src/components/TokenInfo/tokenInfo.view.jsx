@@ -16,7 +16,7 @@ const TokenInfoView = ({ data, moreInfo, toggleShowMore }) => {
           </div>
           <ul className="reserves pt-md-5">
             {Object.keys(data).map((tokenSymbol, i) =>
-              <li key={i}>
+              data[tokenSymbol].totalQty !== 0 && <li key={i}>
                 <TokenQtyView data={data[tokenSymbol]} />
                 <div className="more-info-btn text-right">
                   <button className={moreInfo[tokenSymbol] ? "btn btn-kprimary" : "btn"} onClick={() => toggleShowMore(tokenSymbol)}>

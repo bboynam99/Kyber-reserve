@@ -54,7 +54,15 @@ export function mappingAllRate(data){
     ))
   })
 
-  console.log(returnObj)
+  // {
+  //   ADX: {
+  //     exchange: "bittrex",
+  //     symbol: "ADX/ETH",
+  //     ask: {Quantity: 7403.704, Rate: 0.00379639},
+  //     bid: {Quantity: 1231.32827485, Rate: 0.00365459}
+  //   }
+  //   BAT: {...}
+  // }
   return returnObj
 }
 
