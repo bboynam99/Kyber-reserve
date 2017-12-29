@@ -58,6 +58,8 @@ var config = function(env){
       }),
       new DashboardPlugin(),
       new HtmlWebpackPlugin({
+        title: 'Reserve - kyber.network',
+        favicon: './src/assets/img/favicon.png',
         template: './src/template.html',
         files: {
           css: ['style.css'],
