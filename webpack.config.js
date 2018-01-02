@@ -11,6 +11,7 @@ const PORT = process.env.PORT || "8888";
 
 
 
+
 loaders.push({
   test: /\.scss$/,
   loaders: ['style-loader', 'css-loader?importLoaders=1', 'sass-loader'],
@@ -19,15 +20,36 @@ loaders.push({
 
 var config = function(env){
   return {
-    entry: [
-      'react-hot-loader/patch',
-      './src/index.jsx', // your app's entry point
-    ],
+    entry: 
+    // [
+    //   './src/assets/chart/amcharts.js',
+    //     './src/assets/chart/dataloader.min.js',
+    //     './src/assets/chart/export.min.js',
+    //     './src/assets/chart/light.js',
+    //     './src/assets/chart/serial.js',
+    //     'react-hot-loader/patch',
+    //     './src/index.jsx'
+    // ]
+    {
+      main: [
+        'react-hot-loader/patch',
+        './src/index.jsx'
+      ],
+      chart: [
+        './src/assets/chart/amcharts.js',
+        './src/assets/chart/dataloader.min.js',
+        './src/assets/chart/export.min.js',
+        './src/assets/chart/light.js',
+        './src/assets/chart/serial.js'
+      ]
+    },
+      
+    
     devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
     output: {
       publicPath: '/',
+      filename: '[name].js',
       path: path.join(__dirname, 'public'),
-      filename: 'bundle.js'
     },
     resolve: {
       extensions: ['.js', '.jsx']
@@ -61,10 +83,15 @@ var config = function(env){
         title: 'Reserve - kyber.network',
         favicon: './src/assets/img/favicon.png',
         template: './src/template.html',
-        files: {
-          css: ['style.css'],
-          js: [ "bundle.js"],
-        }
+        // files: {
+        //   css: ['style.css'],
+        //   js: ["app.js"],
+        // },
+        chunks: [
+          'chart',
+          'main',
+        ],
+        chunksSortMode: 'manual'
       }),
       new webpack.DefinePlugin({
         'env': env && env.chain ? '"' + env.chain + '"' : '"kovan"'
