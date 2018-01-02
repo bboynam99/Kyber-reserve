@@ -44,12 +44,13 @@ class TokenInfo extends Component {
   }
 
   render(){
-    let renderView = <TokenInfoView 
-                      data={this.state.data}
-                      moreInfo={this.state.moreInfo}
-                      toggleShowMore={this.toggleShowMore}
-                      />
-    return renderView
+    return (
+        <TokenInfoView 
+        data={this.state.data}
+        moreInfo={this.state.moreInfo}
+        toggleShowMore={this.toggleShowMore}
+        /> 
+    )
   }
 }
 

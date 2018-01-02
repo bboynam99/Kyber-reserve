@@ -1,11 +1,16 @@
 import React from 'react';
 import { roundingNumber } from "../../services/utils/conveter"
+import { DepthChart } from "../Common"
+import { mappingRateForDeptChart } from "../../services/utils/standardize"
 
 const TokenRateView = ({ data, showMore}) => {
 	return (
 		<div className="row mt-5">
 			<div className="col-12 col-md-8">
 				<div className=" table-responsive">
+				<DepthChart 
+				dataProvider={mappingRateForDeptChart(data.rates[0])}
+			/>
 					<table className="table">
 						<thead>
 							<tr className="text-secondary text-uppercase">
@@ -20,8 +25,8 @@ const TokenRateView = ({ data, showMore}) => {
 								<tr>
 									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
-									<td title={rate.ask.Quantity * rate.ask.Rate}>{roundingNumber(rate.ask.Rate)}</td>
-									<td title={rate.bid.Quantity * rate.bid.Rate}>{roundingNumber(rate.bid.Rate)}</td>
+									<td title={rate.ask[0].Quantity * rate.ask[0].Rate}>{roundingNumber(rate.ask[0].Rate)}</td>
+									<td title={rate.bid[0].Quantity * rate.bid[0].Rate}>{roundingNumber(rate.bid[0].Rate)}</td>
 								</tr>
 							</tbody>
 						) : <tbody>

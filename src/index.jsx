@@ -6,6 +6,8 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import { Provider } from "react-redux"
 import { persistor, store } from "./store"
 
+import "./assets/chart/amcharts.js"
+
 ReactDOM.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>

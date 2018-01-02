@@ -9,7 +9,6 @@ import './assets/css/app.scss';
 const App = () => (
   <div>
     <Header/>
-
     <TokenInfo/>
   </div>
 );

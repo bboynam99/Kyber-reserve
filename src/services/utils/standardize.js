@@ -48,8 +48,8 @@ export function mappingAllRate(data){
       {
         exchange: exchangeName,
         symbol: tokenSymbol + "/ETH",
-        ask: pairData[exchangeName].Asks[0],
-        bid: pairData[exchangeName].Bids[0]
+        ask: pairData[exchangeName].Asks,
+        bid: pairData[exchangeName].Bids
       }
     ))
   })
@@ -110,4 +110,49 @@ export function mappingAllReserveBalance(data){
   //   ...
   // }
   return returnObj
+}
+
+function shortRateASC(arrayObj){
+  if(arrayObj && Array.isArray(arrayObj) && arrayObj.length){
+    return arrayObj.sort((a,b) => {
+      return a.Rate - b.Rate
+    })
+  } else {
+    return []
+  }
+}
+
+function shortRateDESC(arrayObj){
+  if(arrayObj && Array.isArray(arrayObj) && arrayObj.length){
+    return arrayObj.sort((a,b) => {
+      return b.Rate - a.Rate
+    })
+  } else {
+    return []
+  }
+}
+
+export function mappingRateForDeptChart(data){
+  if(data){
+    let askTmp = 0
+    let bidTmp = 0
+    let bidArray = shortRateDESC(data.bid).map((b) => {
+      bidTmp += b.Quantity
+      return {
+        BidQuantity: bidTmp,
+        Rate: b.Rate
+      }
+    }).reverse()
+
+    let askArray = shortRateASC(data.ask).map((a) => {
+      askTmp += a.Quantity
+      return {
+        AskQuantity: askTmp,
+        Rate: a.Rate
+      }
+    })
+    return bidArray.concat(askArray)
+  } else {
+    return []
+  }
 }
