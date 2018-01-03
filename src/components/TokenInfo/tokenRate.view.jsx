@@ -3,21 +3,19 @@ import { roundingNumber } from "../../services/utils/conveter"
 import { DepthChart } from "../Common"
 import { mappingRateForDeptChart } from "../../services/utils/standardize"
 
-const TokenRateView = ({ data, showMore}) => {
+
+const TokenRateView = ({ data, showMore }) => {
 	return (
 		<div className="row mt-5">
 			<div className="col-12 col-md-8">
 				<div className=" table-responsive">
-				<DepthChart 
-				dataProvider={mappingRateForDeptChart(data.rates[0])}
-			/>
 					<table className="table">
 						<thead>
 							<tr className="text-secondary text-uppercase">
 								<th className="w-25">Rate</th>
 								<th className="w-25">Symbol</th>
-								<th className="w-25">ASk</th>
-								<th className="w-25">BId</th>
+								<th className="w-25">ASk/BId</th>
+								<th className="w-25">Depth</th>
 							</tr>
 						</thead>
 						{data.rates ? data.rates.map((rate, k) =>
@@ -25,8 +23,10 @@ const TokenRateView = ({ data, showMore}) => {
 								<tr>
 									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
-									<td title={rate.ask[0].Quantity * rate.ask[0].Rate}>{roundingNumber(rate.ask[0].Rate)}</td>
-									<td title={rate.bid[0].Quantity * rate.bid[0].Rate}>{roundingNumber(rate.bid[0].Rate)}</td>
+									<td>{roundingNumber(rate.ask[0].Rate)+ '/' + roundingNumber(rate.bid[0].Rate)}</td>
+									<td><DepthChart
+										rate={rate}
+									/></td>
 								</tr>
 							</tbody>
 						) : <tbody>

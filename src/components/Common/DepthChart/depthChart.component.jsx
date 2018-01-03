@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import AmCharts from "@amcharts/amcharts3-react"
 import { stretchArray } from "../../../services/utils/conveter"
+import { KModal } from "../../Common"
+
+import { mappingRateForDeptChart } from "../../../services/utils/standardize"
 
 function balloon(item, graph) {
   var txt;
@@ -17,9 +20,9 @@ function balloon(item, graph) {
 
 function formatNumber(val, chart, precision) {
   return AmCharts.formatNumber(
-    val, 
+    val,
     {
-      precision: precision ? precision : chart.precision, 
+      precision: precision ? precision : chart.precision,
       decimalSeparator: chart.decimalSeparator,
       thousandsSeparator: chart.thousandsSeparator
     }
@@ -30,17 +33,26 @@ class DepthChart extends Component {
 
   constructor(props) {
     super(props);
+    let mappedData = mappingRateForDeptChart(props.rate)
+    console.log(props.rate)
     this.state = {
-      dataProvider: props.dataProvider,
-      microData: stretchArray(props.dataProvider, 3)
+      rate: props.rate,
+      dataProvider: mappedData,
+      microData: stretchArray(mappedData, 3),
+
+      isOpenModal: false
     };
+  }
+
+  toggleModal = () => {
+    this.setState({ isOpenModal: !this.state.isOpenModal })
   }
 
   render() {
     var config = {
       "type": "serial",
       "theme": "light",
-      "dataProvider": this.state.dataProvider,      
+      "dataProvider": this.state.dataProvider,
       "graphs": [
         {
           "id": "asks",
@@ -51,18 +63,18 @@ class DepthChart extends Component {
           "type": "step",
           "valueField": "AskQuantity",
           "balloonFunction": balloon
-        }, 
+        },
         {
-        "id": "bids",
-        "fillAlphas": 0.1,
-        "lineAlpha": 1,
-        "lineThickness": 2,
-        "lineColor": "#0f0",
-        "type": "step",
-        "valueField": "BidQuantity",
-        "balloonFunction": balloon
-      }, 
-    ],
+          "id": "bids",
+          "fillAlphas": 0.1,
+          "lineAlpha": 1,
+          "lineThickness": 2,
+          "lineColor": "#0f0",
+          "type": "step",
+          "valueField": "BidQuantity",
+          "balloonFunction": balloon
+        },
+      ],
       "categoryField": "Rate",
       "chartCursor": {},
       "balloon": {
@@ -86,7 +98,7 @@ class DepthChart extends Component {
     var microConfig = {
       "type": "serial",
       "theme": "light",
-      "dataProvider": this.state.microData,      
+      "dataProvider": this.state.microData,
       "graphs": [
         {
           "id": "asks",
@@ -94,21 +106,21 @@ class DepthChart extends Component {
           "lineColor": "#f00",
           "type": "step",
           "valueField": "AskQuantity",
-        }, 
+        },
         {
-        "id": "bids",
-        "fillAlphas": 0.1,
-        "lineColor": "#0f0",
-        "type": "step",
-        "valueField": "BidQuantity",
-      }, 
-    ],
+          "id": "bids",
+          "fillAlphas": 0.1,
+          "lineColor": "#0f0",
+          "type": "step",
+          "valueField": "BidQuantity",
+        },
+      ],
       "categoryField": "Rate",
-      "valueAxes": [ {
+      "valueAxes": [{
         "gridAlpha": 0,
         "axisAlpha": 0,
         "labelsEnabled": false
-      } ],
+      }],
       "categoryAxis": {
         "gridAlpha": 0,
         "axisAlpha": 0,
@@ -116,12 +128,64 @@ class DepthChart extends Component {
       }
     };
 
+    var modalContent = (
+      <div>
+        {this.state.dataProvider && this.state.dataProvider.length ? <AmCharts.React style={{ width: "100%", height: "500px" }} options={config} /> : <div />}
+        <div class="row">
+          <div class="col">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.rate.bid ? this.state.rate.bid.map((bidItem, i) => (
+                  <tr key={i}>
+                    <td>{bidItem.Quantity}</td>
+                    <td>{bidItem.Rate}</td>
+                  </tr>
+                )) : <tr/>}
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.rate.ask ? this.state.rate.ask.map((askItem, i) => (
+                 <tr key={i}>
+                  <td>{askItem.Quantity}</td>
+                  <td>{askItem.Rate}</td>
+                </tr>
+              )) : <tr/>}
+            </tbody>
+          </table>
+          </div>  
+        </div>
+      </div>
+    )
 
     return (
-      <div className="App">
-        <AmCharts.React style={{ width: "100%", height: "500px" }} options={config} />
+      <div onClick={this.toggleModal}>
+        <KModal
+          className={{
+            base: 'reveal tiny',
+            afterOpen: 'reveal tiny'
+          }}
+          isOpen={this.state.isOpenModal}
+          contentLabel="error modal"
+          content={modalContent}
+        // onRequestClose={props.onRequestClose}
+        />
 
-        <AmCharts.React style={{ width: "200px", height: "150px" }} options={microConfig} />
+        {this.state.dataProvider && this.state.dataProvider.length ? <AmCharts.React style={{ width: "200px", height: "120px" }} options={microConfig} /> : <div />}
       </div>
     );
   }
