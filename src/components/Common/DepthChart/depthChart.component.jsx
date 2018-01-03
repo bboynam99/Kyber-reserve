@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import AmCharts from "@amcharts/amcharts3-react"
-import { stretchArray } from "../../../services/utils/conveter"
-import { KModal } from "../../Common"
 
+import { stretchArray } from "../../../services/utils/conveter"
 import { mappingRateForDeptChart } from "../../../services/utils/standardize"
 
 import DepthChartView from "./depthChart.view"

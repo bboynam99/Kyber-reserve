@@ -5,13 +5,15 @@ const KModal = (props) => {
     let customStyles = {
         overlay: {
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(11, 15, 26, 0.6)',
+            top: 50,
+            left: 100,
+            right: 100,
+            bottom: 50,
+            backgroundColor: '#F4FbF9',
             zIndex: '1005',
-            overflowY: 'auto'
+            border: '2px solid #ddd',
+            borderRadius: '5px',
+            boxShadow: '0 8px 20px 0 rgba(135, 136, 136, 0.26), 0 0 6px 0 rgba(173, 177, 176, 0.26)'
         },
         content: {
             display: 'block',
