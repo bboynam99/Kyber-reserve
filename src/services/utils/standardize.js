@@ -132,7 +132,7 @@ function shortRateDESC(arrayObj){
   }
 }
 
-export function mappingRateForDeptChart(data){
+export function mappingRateForDepthChart(data){
   if(data){
     let askTmp = 0
     let bidTmp = 0

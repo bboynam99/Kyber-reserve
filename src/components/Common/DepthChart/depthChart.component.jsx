@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AmCharts from "@amcharts/amcharts3-react"
 
 import { stretchArray } from "../../../services/utils/conveter"
-import { mappingRateForDeptChart } from "../../../services/utils/standardize"
+import { mappingRateForDepthChart } from "../../../services/utils/standardize"
 
 import DepthChartView from "./depthChart.view"
 
@@ -10,13 +10,8 @@ class DepthChart extends Component {
 
   constructor(props) {
     super(props);
-    let dataProvider = mappingRateForDeptChart(props.rate)
-    let microData = stretchArray(dataProvider, 3)
-    
+
     this.state = {
-      rate: props.rate,
-      dataProvider: dataProvider,
-      microData: microData,
       isOpenModal: false
     };
   }
@@ -49,11 +44,14 @@ class DepthChart extends Component {
     let toggleModal = () => {
       this.setState({ isOpenModal: !this.state.isOpenModal })
     }
+    
+    let dataProvider = mappingRateForDepthChart(this.props.rate)
+    let microData = stretchArray(dataProvider, 3)
 
-    var config = {
+    let config = {
       "type": "serial",
       "theme": "light",
-      "dataProvider": this.state.dataProvider,
+      "dataProvider": dataProvider,
       "graphs": [
         {
           "id": "asks",
@@ -96,10 +94,10 @@ class DepthChart extends Component {
       }
     };
 
-    var microConfig = {
+    let microConfig = {
       "type": "serial",
       "theme": "light",
-      "dataProvider": this.state.microData,
+      "dataProvider": microData,
       "graphs": [
         {
           "id": "asks",
@@ -131,15 +129,18 @@ class DepthChart extends Component {
 
 
     return (
-     <DepthChartView 
-        rate={this.state.rate}
-        dataProvider={this.state.dataProvider}
-        microData={this.state.microData}
+      <div>
+        <DepthChartView 
+        rate={this.props.rate}
+        dataProvider={dataProvider}
+        microData={microData}
         chartConfig={config}
         microChartConfig={microConfig}
         isOpenModal={this.state.isOpenModal}
         toggleModal={toggleModal}
      />
+      </div>
+     
     );
   }
 }
