@@ -30,6 +30,7 @@ const KModal = (props) => {
             isOpen={props.isOpen}
             onRequestClose={props.onRequestClose}
             contentLabel={props.contentLabel}
+            shouldCloseOnOverlayClick={true}
         >
             {props.content}
         </Modal>

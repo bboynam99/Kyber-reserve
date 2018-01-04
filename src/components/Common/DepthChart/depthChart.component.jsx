@@ -98,6 +98,12 @@ class DepthChart extends Component {
       "type": "serial",
       "theme": "light",
       "dataProvider": microData,
+      autoMargins: false,
+      marginTop: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginRight: 0,
+      pullOutRadius: 0,
       "graphs": [
         {
           "id": "asks",

@@ -7,15 +7,16 @@ import { mappingRateForDeptChart } from "../../services/utils/standardize"
 const TokenRateView = ({ data, showMore }) => {
 	return (
 		<div className="row mt-5">
-			<div className="col-12 col-md-8">
+			<div className="col-12 col-md-10">
 				<div className=" table-responsive">
 					<table className="table">
 						<thead>
 							<tr className="text-secondary text-uppercase">
-								<th className="w-25">Rate</th>
-								<th className="w-25">Symbol</th>
-								<th className="w-25">ASk/BId</th>
-								<th className="w-25">Depth</th>
+								<th>Rate</th>
+								<th>Symbol</th>
+								<th>BId</th>
+								<th>ASk</th>
+								<th>Depth</th>
 							</tr>
 						</thead>
 						{data.rates ? data.rates.map((rate, k) =>
@@ -23,10 +24,13 @@ const TokenRateView = ({ data, showMore }) => {
 								<tr>
 									<td>{rate.exchange}</td>
 									<td>{rate.symbol}</td>
-									<td>{roundingNumber(rate.ask[0].Rate)+ '/' + roundingNumber(rate.bid[0].Rate)}</td>
-									<td><DepthChart
-										rate={rate}
-									/></td>
+									<td>{roundingNumber(rate.bid[0].Rate)}</td>
+									<td>{roundingNumber(rate.ask[0].Rate)}</td>
+									<td>
+										<DepthChart
+											rate={rate}
+										/>
+									</td>
 								</tr>
 							</tbody>
 						) : <tbody>
