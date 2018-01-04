@@ -8,8 +8,8 @@ import DepthChartView from "./depthChart.view"
 
 class DepthChart extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       isOpenModal: false
@@ -44,7 +44,7 @@ class DepthChart extends Component {
     let toggleModal = () => {
       this.setState({ isOpenModal: !this.state.isOpenModal })
     }
-    
+
     let dataProvider = mappingRateForDepthChart(this.props.rate)
     let microData = stretchArray(dataProvider, 3)
 
@@ -98,12 +98,14 @@ class DepthChart extends Component {
       "type": "serial",
       "theme": "light",
       "dataProvider": microData,
-      autoMargins: false,
-      marginTop: 0,
-      marginBottom: 0,
-      marginLeft: 0,
-      marginRight: 0,
-      pullOutRadius: 0,
+      "autoMargins": false,
+      "marginTop": 0,
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "pullOutRadius": 0,
+      "borderAlpha": 0.5,
+      "borderColor": "#009999",
       "graphs": [
         {
           "id": "asks",
@@ -135,8 +137,7 @@ class DepthChart extends Component {
 
 
     return (
-      <div>
-        <DepthChartView 
+      <DepthChartView
         rate={this.props.rate}
         dataProvider={dataProvider}
         microData={microData}
@@ -144,9 +145,8 @@ class DepthChart extends Component {
         microChartConfig={microConfig}
         isOpenModal={this.state.isOpenModal}
         toggleModal={toggleModal}
-     />
-      </div>
-     
+      />
+
     );
   }
 }

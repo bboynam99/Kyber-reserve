@@ -70,7 +70,7 @@ const DepthChartView = ({ rate, dataProvider, microData, chartConfig, microChart
       // onRequestClose={props.onRequestClose}
       />
 
-      {dataProvider && dataProvider.length ? <AmCharts.React style={{ width: "200px", height: "120px" }} options={microChartConfig} /> : <div />}
+      {dataProvider && dataProvider.length ? <AmCharts.React style={{ width: "110px", height: "60px" }} options={microChartConfig} /> : <div />}
     </div>
   );
 }

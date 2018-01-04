@@ -22,11 +22,11 @@ const TokenRateView = ({ data, showMore }) => {
 						{data.rates ? data.rates.map((rate, k) =>
 							<tbody key={k} className={showMore || k < 1 ? "" : "d-none"}>
 								<tr>
-									<td>{rate.exchange}</td>
-									<td>{rate.symbol}</td>
-									<td>{roundingNumber(rate.bid[0].Rate)}</td>
-									<td>{roundingNumber(rate.ask[0].Rate)}</td>
-									<td>
+									<td class="align-middle">{rate.exchange.toUpperCase()}</td>
+									<td class="align-middle">{rate.symbol}</td>
+									<td class="align-middle">{roundingNumber(rate.bid[0].Rate)}</td>
+									<td class="align-middle">{roundingNumber(rate.ask[0].Rate)}</td>
+									<td class="align-middle">
 										<DepthChart
 											rate={rate}
 										/>

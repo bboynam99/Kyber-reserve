@@ -41,7 +41,7 @@ export function stretchArray(array, number){
   let returnArray = []
   if(array && Array.isArray(array)){
     array.map((item, index) => {
-      if(index % 2 == 0){
+      if(index % number == 0){
         returnArray.push(item)
       }
     })

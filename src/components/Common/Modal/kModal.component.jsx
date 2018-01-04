@@ -1,7 +1,8 @@
 import React from "react"
 import Modal from 'react-modal'
 
-const KModal = (props) => {
+const KModal = ({className, isOpen, label, content, onRequestClose}) => {
+    Modal.setAppElement('#app');
     let customStyles = {
         overlay: {
             position: 'fixed',
@@ -22,17 +23,17 @@ const KModal = (props) => {
     return (
         <Modal
             className={{
-                base: props.className.base + " react-modal",
-                afterOpen: props.className.afterOpen + ' modal-open',
+                base: className.base + " react-modal",
+                afterOpen: className.afterOpen + ' modal-open',
                 beforeClose:""
             }}
             style={customStyles}
-            isOpen={props.isOpen}
-            onRequestClose={props.onRequestClose}
-            contentLabel={props.contentLabel}
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            contentLabel={label}
             shouldCloseOnOverlayClick={true}
         >
-            {props.content}
+            {content}
         </Modal>
 
     )
