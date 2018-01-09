@@ -1,4 +1,6 @@
 
+import BigNumber from "bignumber.js"
+
 
 export function roundingNumber(number, maxDigis = 7, size = 3) {
   if(!number) return 0
@@ -55,5 +57,45 @@ export function minimizeId(idString){
     return idSplit[0] + "|..."
   } else {
     return ''
+  }
+}
+
+function acceptableTyping(number) {
+  // ends with a dot
+  if (number.length > 0 && number[number.length - 1] == ".") {
+    return true
+  }
+
+  // TODO refactor format
+  // zero suffixed with real number
+  // if (number.length > 0 && number[number.length - 1] == "0") {
+  //   for (var i = 0; i < number.length; i++) {
+  //     if (number[i] == ".") {
+  //       return true
+  //     }
+  //   }
+  // }
+  return false
+}
+
+export function toT(number, decimal, round) {
+  console.log(decimal)
+  var bigNumber = new BigNumber(number.toString())
+  var result
+  if (bigNumber == 'NaN' || bigNumber == 'Infinity') {
+    return number
+  } else if (acceptableTyping(number)) {
+    return number
+  }
+  if (decimal) {
+    result = bigNumber.div(Math.pow(10, decimal));
+  }
+  else {
+    result = bigNumber.div(1000000000000000000)
+  }
+  if (round) {
+    return result.round(round).toString()
+  } else {
+    return result.toString()
   }
 }

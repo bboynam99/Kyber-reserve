@@ -24,8 +24,8 @@ const TokenRateView = ({ data, showMore }) => {
 								<tr>
 									<td class="align-middle">{rate.exchange.toUpperCase()}</td>
 									<td class="align-middle">{rate.symbol}</td>
-									<td class="align-middle">{roundingNumber(rate.bid[0].Rate)}</td>
-									<td class="align-middle">{roundingNumber(rate.ask[0].Rate)}</td>
+									{ rate.bid ? <td class="align-middle">{roundingNumber(rate.bid[0].Rate)}</td> : <td />}
+									{ rate.ask ? <td class="align-middle">{roundingNumber(rate.ask[0].Rate)}</td> : <td />}
 									<td class="align-middle">
 										<DepthChart
 											rate={rate}

@@ -15,67 +15,80 @@ const SUPPORTED_TOKENS = {
   ETH: {
     name: "Ethereum",
     symbol: "ETH",
-    icon: "eth.svg"
+    icon: "eth.svg",
+    decimal: 18
   },
   KNC: {
     name: "KyberNetwork",
     symbol: "KNC",
-    icon: "knc.svg"
+    icon: "knc.svg",
+    decimal: 18,
   },
   OMG: {
     name: "OmiseGO",
     symbol: "OMG",
-    icon: "omg.svg"
+    icon: "omg.svg",
+    decimal: 18,
   },
   DGD: {
     name: "Digix",
     symbol: "DGD",
-    icon: "dgd.svg"
+    icon: "dgd.svg",
+    decimal: 9,
   },
   CVC: {
     name: "Civic",
     symbol: "CVC",
-    icon: "cvc.svg"
+    icon: "cvc.svg",
+    decimal: 8,
   },
   FUN: {
     name: "FunFair",
     symbol: "FUN",
-    icon: "fun.svg"
+    icon: "fun.svg",
+    decimal: 8,
   },
   MCO: {
     name: "Monaco",
     symbol: "MCO",
-    icon: "mco.svg"
+    icon: "mco.svg",
+    decimal: 8,
   },
   GNT: {
     name: "Golem",
     symbol: "GNT",
-    icon: "gnt.svg"
+    icon: "gnt.svg",
+    decimal: 18,
   },
   ADX: {
     name: "Adex",
     symbol: "ADX",
-    icon: "adx.svg"
+    icon: "adx.svg",
+    decimal: 4,
   },
   PAY: {
     name: "TenX",
     symbol: "PAY",
-    icon: "pay.svg"
+    icon: "pay.svg",
+    decimal: 18,
   },
   BAT: {
     name: "BasicAttention",
     symbol: "BAT",
-    icon: "bat.svg"
+    icon: "bat.svg",
+    decimal: 18,
   },
   EOS: {
     name: "Eos",
     symbol: "EOS",
-    icon: "eos.svg"
+    icon: "eos.svg",
+    decimal: 18,
   },
   LINK: {
     name: "ChainLink",
     symbol: "LINK",
-    icon: "link.svg"
+    icon: "link.svg",
+    decimal: 18,
   }
 }
 

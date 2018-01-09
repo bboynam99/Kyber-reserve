@@ -1,6 +1,4 @@
-export { default as PendingActivities } from './pendingActivities.component.jsx';
-
-export { default as ExpandTable } from "./expandActivities.component.jsx"
+export { default as PendingActivitiesView } from './pendingActivities.view.jsx';
 
 export { default as SetRateDetailView } from "./setRateDetail.view.jsx"
 export { default as TradeDetailView } from "./tradeDetail.view.jsx"

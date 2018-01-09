@@ -3,7 +3,7 @@ import TokenBalanceView from "./tokenBalance.view"
 import TokenQtyView from "./tokenQty.view"
 import TokenRateView from "./tokenRate.view"
 
-import {PendingActivities, ExpandTable} from "../PendingActivities"
+import { PendingActivitiesView } from "../PendingActivities"
 
 import logo from "../../assets/img/dashboard.png"
 
@@ -17,13 +17,9 @@ const TokenInfoView = ({ data, moreInfo, toggleShowMore, pendingActivities }) =>
             <h5 className="title py-2">Kyber Reserve</h5>
           </div>
 
-          <ExpandTable 
-            pendingActivities={pendingActivities} 
-          />
-
-          {/* <PendingActivities 
+          <PendingActivitiesView 
             pendingActivities={pendingActivities}
-          /> */}
+          />
           <ul className="reserves pt-md-5">
             {Object.keys(data).map((tokenSymbol, i) =>
               data[tokenSymbol].totalQty !== 0 && <li key={i}>
