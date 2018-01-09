@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BLOCKCHAIN_INFO from "../../../env"
-import { roundingNumber } from "../../services/utils/conveter"
+import { roundingNumber } from "../../services/utils/converter"
 
 import IMAGE_ICON from "../../assets/img"
 

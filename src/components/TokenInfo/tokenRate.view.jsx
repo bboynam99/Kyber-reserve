@@ -1,5 +1,5 @@
 import React from 'react';
-import { roundingNumber } from "../../services/utils/conveter"
+import { roundingNumber } from "../../services/utils/converter"
 import { DepthChart } from "../Common"
 import { mappingRateForDeptChart } from "../../services/utils/standardize"
 

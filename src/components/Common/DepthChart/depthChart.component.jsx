@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AmCharts from "@amcharts/amcharts3-react"
 
-import { stretchArray } from "../../../services/utils/conveter"
+import { stretchArray } from "../../../services/utils/converter"
 import { mappingRateForDepthChart } from "../../../services/utils/standardize"
 
 import DepthChartView from "./depthChart.view"

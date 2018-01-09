@@ -48,3 +48,12 @@ export function stretchArray(array, number){
   }
   return returnArray
 }
+
+export function minimizeId(idString){
+  if(idString && typeof idString == 'string'){
+    var idSplit = idString.split('|')
+    return idSplit[0] + "|..."
+  } else {
+    return ''
+  }
+}

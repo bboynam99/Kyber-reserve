@@ -5,14 +5,14 @@ import { mappingTokenRate, mappingTokenBalance, mappingQty,
 
 export default class TokensService {
   constructor() {
-    this.tokens = {}
+    this.tokens = { data: {}, pendingActivities: []}
     Object.keys(CONSTANT.SUPPORTED_TOKENS).forEach((tokenName) => {
-      this.tokens[tokenName] = new Token(CONSTANT.SUPPORTED_TOKENS[tokenName]);
+      this.tokens.data[tokenName] = new Token(CONSTANT.SUPPORTED_TOKENS[tokenName]);
     })
   }
 
   getTokens() {
-    return this.tokens
+    return this.tokens.data
   }
 
   getAllRate(service) {
@@ -34,20 +34,22 @@ export default class TokensService {
     let mappedAllExchangeBalance = mappingAllExchangeBalance(allBalance.data.ExchangeBalances)
 
     let mappedAllReserveBalance = mappingAllReserveBalance(allBalance.data.ReserveBalances)
-
+    let dataToken = this.tokens.data
     Object.keys(CONSTANT.SUPPORTED_TOKENS).forEach((tokenSymbol) => {
       if(mappedAllRate[tokenSymbol]) {
-        this.tokens[tokenSymbol].setRates(mappedAllRate[tokenSymbol])
+        dataToken[tokenSymbol].setRates(mappedAllRate[tokenSymbol])
       }
 
       if(mappedAllExchangeBalance[tokenSymbol]) {
-        this.tokens[tokenSymbol].setExchangeBalance(mappedAllExchangeBalance[tokenSymbol])
+        dataToken[tokenSymbol].setExchangeBalance(mappedAllExchangeBalance[tokenSymbol])
       }
 
       if(mappedAllReserveBalance[tokenSymbol]){
-        this.tokens[tokenSymbol].setReserveBalance(mappedAllReserveBalance[tokenSymbol])
+        dataToken[tokenSymbol].setReserveBalance(mappedAllReserveBalance[tokenSymbol])
       }
     })
+    this.tokens.data = dataToken
+    this.tokens.pendingActivities = allBalance.data.PendingActivities
 
     return this.tokens
   }

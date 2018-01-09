@@ -1,0 +1,1 @@
+export { default as PendingActivitiesView } from './pendingActivities.view.jsx';

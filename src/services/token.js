@@ -1,7 +1,7 @@
 
 import { mappingTokenRate, mappingTokenBalance, mappingQty } from "./utils/standardize"
 import CONSTANT from "./constant"
-import { flatten } from "./utils/conveter"
+import { flatten } from "./utils/converter"
 
 export default class Token {
   constructor(

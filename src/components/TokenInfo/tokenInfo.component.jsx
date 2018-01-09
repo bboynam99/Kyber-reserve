@@ -16,6 +16,7 @@ class TokenInfo extends Component {
     this.intervalFetchTokenData
     this.state = {
       data: {},
+      pendingActivities: [],
       moreInfo: {}
     }
   }
@@ -30,7 +31,7 @@ class TokenInfo extends Component {
 
   syncAllTokenData = () => {
     this.tokensService.syncAll(this.props.apiService).then((tokens) => {
-      this.setState({data: tokens})
+      this.setState({data: tokens.data, pendingActivities: tokens.pendingActivities })
     })
   }
 
@@ -49,6 +50,7 @@ class TokenInfo extends Component {
         data={this.state.data}
         moreInfo={this.state.moreInfo}
         toggleShowMore={this.toggleShowMore}
+        pendingActivities={this.state.pendingActivities}
         /> 
     )
   }
