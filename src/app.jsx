@@ -5,7 +5,6 @@ import { TokenInfo } from './components/TokenInfo'
 import 'normalize.css';
 import './assets/css/app.scss';
 
-
 const App = () => (
   <div>
     <Header/>
