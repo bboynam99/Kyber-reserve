@@ -5,7 +5,7 @@
   "main": "''",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --colors",
-    "start": "webpack-dev-server --host 0.0.0.0 --port 8888 --progress --colors --env.chain=mainnet",
+    "start": "webpack-dev-server --host 0.0.0.0 --port 8888 --colors --env.chain=mainnet",
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev": " webpack-dashboard -- webpack-dev-server --env.chain=kovan",
     "test": "export NODE_ENV=test && jest"
@@ -20,6 +20,7 @@
   "dependencies": {
     "@amcharts/amcharts3-react": "^3.0.0",
     "bignumber.js": "^5.0.0",
+    "ethereumjs-util": "^5.1.3",
     "localforage": "^1.5.5",
     "node-sass": "^4.7.2",
     "normalize.css": "^7.0.0",
@@ -32,7 +33,8 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.4.0",
     "sass-loader": "^6.0.6",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "web3": "^1.0.0-beta.27"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

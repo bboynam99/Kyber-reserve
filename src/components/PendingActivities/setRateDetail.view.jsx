@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { toT } from "../../services/utils/converter"
-import * as constant from "../../services/constant"
+import CONSTANTS from "../../services/constants"
 
 const SetRateDetailView = ({ data }) => {
 	return (
@@ -22,8 +22,8 @@ const SetRateDetailView = ({ data }) => {
 						return (
 							<tr key={i}>
 								<td>{token}</td>
-								<td>{toT(data.Params.buys[i], constant.SUPPORTED_TOKENS[token].decimal, 5)}</td>
-								<td>{toT(data.Params.sells[i], constant.SUPPORTED_TOKENS.ETH.decimal, 5)}</td>
+								<td>{toT(data.Params.buys[i], CONSTANTS.SUPPORTED_TOKENS[token].decimal, 5)}</td>
+								<td>{toT(data.Params.sells[i], CONSTANTS.SUPPORTED_TOKENS.ETH.decimal, 5)}</td>
 							</tr>
 						)
 					}) : <div />}

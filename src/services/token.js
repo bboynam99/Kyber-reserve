@@ -1,18 +1,18 @@
 
 import { mappingTokenRate, mappingTokenBalance, mappingQty } from "./utils/standardize"
-import CONSTANT from "./constant"
+import CONSTANTS from "./constants"
 import { flatten } from "./utils/converter"
 
 export default class Token {
   constructor(
     info,
     persent = 0,
-    reserveBalance = CONSTANT.INNIT_TOKEN_RESERVE_BALANCE,
+    reserveBalance = CONSTANTS.INNIT_TOKEN_RESERVE_BALANCE,
     reserveTarget = 0,
     totalQty = 0,
     totalTarget = 0,
-    rates = CONSTANT.INNIT_TOKEN_RATES,                                  // { bittrex: {ask: xxx, bid: xxxx}, ...}
-    exchangeBalance = CONSTANT.INNIT_TOKEN_EXCHANGE_BALANCE,             // { bittrex: 0, binance: 0, ...}
+    rates = CONSTANTS.INNIT_TOKEN_RATES,                                  // { bittrex: {ask: xxx, bid: xxxx}, ...}
+    exchangeBalance = CONSTANTS.INNIT_TOKEN_EXCHANGE_BALANCE,             // { bittrex: 0, binance: 0, ...}
   ){
     this.info = info
     this.persent = persent

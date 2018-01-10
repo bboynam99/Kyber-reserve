@@ -1,13 +1,13 @@
 import Token from "./token"
-import CONSTANT from "./constant"
+import CONSTANTS from "./constants"
 import { mappingTokenRate, mappingTokenBalance, mappingQty, 
   mappingAllRate, mappingAllExchangeBalance, mappingAllReserveBalance} from "./utils/standardize"
 
 export default class TokensService {
   constructor() {
     this.tokens = { data: {}, pendingActivities: []}
-    Object.keys(CONSTANT.SUPPORTED_TOKENS).forEach((tokenName) => {
-      this.tokens.data[tokenName] = new Token(CONSTANT.SUPPORTED_TOKENS[tokenName]);
+    Object.keys(CONSTANTS.SUPPORTED_TOKENS).forEach((tokenName) => {
+      this.tokens.data[tokenName] = new Token(CONSTANTS.SUPPORTED_TOKENS[tokenName]);
     })
   }
 
@@ -35,7 +35,7 @@ export default class TokensService {
 
     let mappedAllReserveBalance = mappingAllReserveBalance(allBalance.data.ReserveBalances)
     let dataToken = this.tokens.data
-    Object.keys(CONSTANT.SUPPORTED_TOKENS).forEach((tokenSymbol) => {
+    Object.keys(CONSTANTS.SUPPORTED_TOKENS).forEach((tokenSymbol) => {
       if(mappedAllRate[tokenSymbol]) {
         dataToken[tokenSymbol].setRates(mappedAllRate[tokenSymbol])
       }

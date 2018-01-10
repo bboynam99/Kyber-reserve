@@ -1,4 +1,4 @@
-import CONSTANT from "../constant"
+import CONSTANTS from "../constants"
 import BigNumber from "bignumber.js"
 
 export function mappingTokenRate(token, data){
@@ -19,11 +19,11 @@ export function mappingTokenRate(token, data){
 }
 
 export function mappingTokenBalance(data){
-  return Object.keys(CONSTANT.SUPPORTED_EXCHANGE).map(exchangeName => {
+  return Object.keys(CONSTANTS.SUPPORTED_EXCHANGE).map(exchangeName => {
     let tokenValue = data && typeof data == 'object' && data.Balance ? data.Balance : 0
 
     return { 
-      exchange: CONSTANT.SUPPORTED_EXCHANGE[exchangeName].name,
+      exchange: CONSTANTS.SUPPORTED_EXCHANGE[exchangeName].name,
       value: tokenValue
     }
   })
@@ -69,10 +69,10 @@ export function mappingAllRate(data){
 export function mappingAllExchangeBalance(data){
   let returnObj = {}
   
-  Object.keys(CONSTANT.SUPPORTED_TOKENS).map((tokenSymbol) => {
+  Object.keys(CONSTANTS.SUPPORTED_TOKENS).map((tokenSymbol) => {
     let tokenBalanceObj = {}
-    Object.keys(CONSTANT.SUPPORTED_EXCHANGE).map(exchangeSymbol => {
-      let exchangeName = CONSTANT.SUPPORTED_EXCHANGE[exchangeSymbol].name
+    Object.keys(CONSTANTS.SUPPORTED_EXCHANGE).map(exchangeSymbol => {
+      let exchangeName = CONSTANTS.SUPPORTED_EXCHANGE[exchangeSymbol].name
       tokenBalanceObj[exchangeSymbol] = {
         AvailableBalance: data[exchangeName] && data[exchangeName].AvailableBalance[tokenSymbol] ? data[exchangeName].AvailableBalance[tokenSymbol] : 0,
         DepositBalance: data[exchangeName] && data[exchangeName].DepositBalance[tokenSymbol] ? data[exchangeName].DepositBalance[tokenSymbol] : 0,
@@ -100,7 +100,7 @@ export function mappingAllExchangeBalance(data){
 
 export function mappingAllReserveBalance(data){
   let returnObj = {}
-  Object.keys(CONSTANT.SUPPORTED_TOKENS).map((tokenSymbol) => {
+  Object.keys(CONSTANTS.SUPPORTED_TOKENS).map((tokenSymbol) => {
     returnObj[tokenSymbol] = data[tokenSymbol].Balance ? data[tokenSymbol].Balance : 0
   })
 

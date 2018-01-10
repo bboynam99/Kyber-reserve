@@ -1,7 +1,13 @@
 import React from 'react';
 
+import * as ethUtil from 'ethereumjs-util'
+import CONSTANTS from "../constants"
+import BLOCKCHAIN_INFO from "../../../env"
+
 const httpEndpoint = "http://52.77.19.90:8000/"
 const wsEndpoint = "ws://52.77.19.90:8000/"
+
+
 // const wss = new WebSocket.Server({ port: 8080 });
 
 // function heartbeat() {
@@ -27,6 +33,7 @@ export default class Provider extends React.Component {
   constructor(type) {
     super(type)
     this.initProvider(type)
+    // this.initContract()
   }
 
   initProvider(type) {
@@ -41,6 +48,14 @@ export default class Provider extends React.Component {
         this.currentProvider = "http"
         break
     }
+  }
+
+  initContract() {
+    this.erc20Contract = new this.rpc.eth.Contract(CONSTANTS.ABIS.ERC20)
+    this.networkAddress = BLOCKCHAIN_INFO.network
+    this.wrapperAddress = BLOCKCHAIN_INFO.wrapper
+    this.networkContract = new this.rpc.eth.Contract(CONSTANTS.ABIS.KYBER_NETWORK, this.networkAddress)
+    this.wrapperContract = new this.rpc.eth.Contract(CONSTANTS.ABIS.KYBER_WRAPPER, this.wrapperAddress)
   }
 
 

@@ -110,10 +110,11 @@
       "usd_id":"chainlink"
     }
   },
+
   "network": "0xe801403a9b8dae494f9088a4687c1c139fae2fe4",
   "wrapper": "0x54556ac5afbd73b6a9d1c3d2d679477dd33ea81f",
   "server_logs": {
-    "url": "kovan.etherscan.io",
+    "url": "ropsten.etherscan.io",
     "api_key": "D8YAEQ3V4THAPDA9YSB1YGA1QY9KAMHY6M"
   }
 }
