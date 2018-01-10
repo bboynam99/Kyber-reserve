@@ -1,4 +1,4 @@
-import Provider from "./bprovider"
+import Provider from "./provider"
 
 export default class ApiService{
   constructor(){
