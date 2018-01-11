@@ -7,7 +7,7 @@ import { PendingActivitiesView } from "../PendingActivities"
 
 import logo from "../../assets/img/dashboard.png"
 
-const TokenInfoView = ({ data, moreInfo, toggleShowMore, pendingActivities }) => {
+const TokenInfoView = ({ data, moreInfo, toggleShowMore, pendingActivities, totalAllQty }) => {
   return (
     <section>
       <div>
@@ -23,7 +23,10 @@ const TokenInfoView = ({ data, moreInfo, toggleShowMore, pendingActivities }) =>
           <ul className="reserves pt-md-5">
             {Object.keys(data).map((tokenSymbol, i) =>
               data[tokenSymbol].totalQty !== 0 && <li key={i}>
-                <TokenQtyView data={data[tokenSymbol]} />
+                <TokenQtyView 
+                  data={data[tokenSymbol]}
+                  totalAllQty={totalAllQty}
+                />
                 <div className="more-info-btn text-right">
                   <button className={moreInfo[tokenSymbol] ? "btn btn-kprimary" : "btn"} onClick={() => toggleShowMore(tokenSymbol)}>
                     MORE INFO

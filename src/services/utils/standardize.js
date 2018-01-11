@@ -101,7 +101,7 @@ export function mappingAllExchangeBalance(data){
 export function mappingAllReserveBalance(data){
   let returnObj = {}
   Object.keys(CONSTANTS.SUPPORTED_TOKENS).map((tokenSymbol) => {
-    returnObj[tokenSymbol] = data[tokenSymbol].Balance ? data[tokenSymbol].Balance : 0
+    returnObj[tokenSymbol] = data[tokenSymbol].Balance ? data[tokenSymbol].Balance.toString() : 0
   })
 
   // {

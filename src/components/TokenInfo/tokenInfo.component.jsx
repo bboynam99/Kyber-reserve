@@ -17,7 +17,8 @@ class TokenInfo extends Component {
     this.state = {
       data: {},
       pendingActivities: [],
-      moreInfo: {}
+      moreInfo: {},
+      totalAllQty: 0
     }
   }
   componentDidMount(){
@@ -31,7 +32,11 @@ class TokenInfo extends Component {
 
   syncAllTokenData = () => {
     this.tokensService.syncAll(this.props.apiService).then((tokens) => {
-      this.setState({data: tokens.data, pendingActivities: tokens.pendingActivities })
+      this.setState({
+        data: tokens.data, 
+        pendingActivities: tokens.pendingActivities,
+        totalAllQty: tokens.totalAllQty
+      })
     })
   }
 
@@ -51,6 +56,7 @@ class TokenInfo extends Component {
         moreInfo={this.state.moreInfo}
         toggleShowMore={this.toggleShowMore}
         pendingActivities={this.state.pendingActivities}
+        totalAllQty={this.state.totalAllQty}
         /> 
     )
   }

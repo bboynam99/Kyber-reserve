@@ -16,11 +16,9 @@ export default class BaseProvider extends React.Component {
     this.wsProvider = this.getWsProvider()
 
     this.initProvider(type)
-    // this.initContract()
   }
 
   initProvider(type) {
-    console.log(type)
     switch (type) {
       case "http":
         this.currentProvider = this.httpProvider

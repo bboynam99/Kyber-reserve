@@ -98,3 +98,46 @@ export function toT(number, decimal, round) {
     return result.toString()
   }
 }
+
+// export function caculateEthBalance(token){
+//   if(token.symbol.toLowerCase() == 'eth'){
+//     return token.balance
+//   } else {
+//     var rateBig = new BigNumber(token.rate)
+//     var balanceBig = new BigNumber(token.balance)
+//     var weiParam = new BigNumber(10)
+//     var balanceToken = balanceBig.div(weiParam.pow(token.decimal))
+
+//     var balanceEth = balanceToken.times(rateBig)
+//     return balanceEth.toString()
+//   }
+// }
+
+function caculateAverageExchangeRate(rates){
+  if(!rates || !Array.isArray(rates) || !rates.length){
+    return 0
+  }
+  let rateExchanges = rates.map(rate => {
+    let bigRateAsk = new BigNumber(rate.ask[0].Rate.toString()) 
+    let bigRateBid = new BigNumber(rate.bid[0].Rate.toString())
+    return bigRateAsk.add(bigRateBid).div(2)
+  })
+  let rateSum = rateExchanges.reduce((a,b) => {
+    return a.add(b)
+  }, new BigNumber(0))
+  return rateSum.div(rates.length)
+}
+
+export function caculateEthBalance(tokenBalance, ratesToEth){
+  if(!tokenBalance) return 0
+  
+  let rateAverage = caculateAverageExchangeRate(ratesToEth)
+  if(!rateAverage) return 0
+
+  let balanceBig = new BigNumber(tokenBalance.toString())
+
+  let balanceEth = balanceBig.times(rateAverage)
+  return balanceEth.toString()
+}
+
+

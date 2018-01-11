@@ -15,17 +15,18 @@ export default class HttpProvider extends BaseEthereumProvider {
         return this.connection
     }
 
-    send(url, method, data) {
+    send(path, method, data) {
         var fetchParams = {
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            }
+            // headers: {
+            //     'Accept': 'application/json, text/plain, */*',
+            //     'Content-Type': 'application/json'
+            // }
         }
         if(method == "POST") {
             fetchParams.method = "POST"
             fetchParams.body = data 
         }
+        let url = this.rpcUrl + path
         return new Promise((resolve, reject) => {
           fetch(url, fetchParams)
             .then((response) => {
