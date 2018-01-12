@@ -1,0 +1,38 @@
+.reserves{
+  .more-info-btn{
+    height: 0;
+    position: relative;
+    top: 55px;
+  }
+}
+
+.depth-chart{
+  // border: 2px solid #ddd;
+  // border-radius: 5px;
+
+  .table-fixed{
+    thead {
+      width: 97%;
+    }
+    tbody {
+      height: 230px;
+      overflow-y: auto;
+      width: 100%;
+    }
+    thead, tbody, tr, td, th {
+      display: block;
+    }
+    tbody td, thead > tr> th {
+      float: left;
+      border-bottom-width: 0;
+    }
+  }
+}
+
+.color-black{
+  color: black
+}
+
+.rt-td{
+  text-align: center
+}
