@@ -117,15 +117,18 @@ function caculateAverageExchangeRate(rates){
   if(!rates || !Array.isArray(rates) || !rates.length){
     return 0
   }
+  let rateSum = new BigNumber(0)
+  let rateLength = 0
   let rateExchanges = rates.map(rate => {
+    if(!rate.ask || !rate.bid) return 0
     let bigRateAsk = new BigNumber(rate.ask[0].Rate.toString()) 
     let bigRateBid = new BigNumber(rate.bid[0].Rate.toString())
-    return bigRateAsk.add(bigRateBid).div(2)
+    rateLength++
+    let arv = bigRateAsk.add(bigRateBid).div(2)
+    rateSum = rateSum.add(arv)
   })
-  let rateSum = rateExchanges.reduce((a,b) => {
-    return a.add(b)
-  }, new BigNumber(0))
-  return rateSum.div(rates.length)
+  if(!rateLength) return 0
+  return rateSum.div(rateLength)
 }
 
 export function caculateEthBalance(tokenBalance, ratesToEth){
