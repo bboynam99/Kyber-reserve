@@ -3,17 +3,17 @@ import React from 'react';
 import HttpProvider from "./httpProvider"
 import WsProvider from "./wsProvider"
 
-const httpEndpoint = process.env.HTTP_ENDPOINT || "http://52.77.19.90:8000/"
+// import { validURL } from "../../../services/utils/validator"
+const httpEndpoint = process.env.HTTP_ENDPOINT && process.env.HTTP_ENDPOINT != "undefined" ? process.env.HTTP_ENDPOINT : "http://52.77.19.90:8000/"
 const wsEndpoint = "ws://52.77.19.90:8000/"
-
 
 export default class BaseProvider extends React.Component {
   constructor(type) {
     super(type)
 
-    this.httpProvider = this.getHttpProvider()
-    this.wsProvider = this.getWsProvider()
-
+    this.httpProvider = this.getHttpProvider(httpEndpoint)
+    // this.wsProvider = this.getWsProvider(wsEndpoint)
+    
     this.initProvider(type)
   }
 
@@ -34,12 +34,12 @@ export default class BaseProvider extends React.Component {
     }
   }
 
-  getWsProvider() {
-    return new WsProvider({ url: wsEndpoint })
+  getWsProvider(wsUrl) {
+    return new WsProvider({ url: wsUrl })
   }
 
-  getHttpProvider() {
-    return new HttpProvider({ url: httpEndpoint })
+  getHttpProvider(httpUrl) {
+    return new HttpProvider({ url: httpUrl })
   }
 
   setProvider(provider) {

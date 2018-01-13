@@ -23,6 +23,6 @@ RUN npm run build
 RUN npm install -g http-server
 
 # set command start server
-CMD http-server ./public
+CMD http-server ./public -p 9999
 
-EXPOSE 8080
+EXPOSE 9999
