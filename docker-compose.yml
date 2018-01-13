@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      args:
+        HTTP_ENDPOINT: http://52.77.19.90:8000/
+    ports:
+     - "8080:8080" 
+    volumes:
+     - .:/starter
+     - /starter/node_modules

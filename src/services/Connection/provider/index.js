@@ -3,8 +3,7 @@ import React from 'react';
 import HttpProvider from "./httpProvider"
 import WsProvider from "./wsProvider"
 
-
-const httpEndpoint = "http://52.77.19.90:8000/"
+const httpEndpoint = process.env.HTTP_ENDPOINT || "http://52.77.19.90:8000/"
 const wsEndpoint = "ws://52.77.19.90:8000/"
 
 
