@@ -6,6 +6,7 @@ import CONSTANTS from "../../services/constants"
 const SetRateDetailView = ({ data }) => {
 	return (
 		<div class="p-2">
+			<pre>Id: {data.ID}</pre>
 			<strong class="bold">Block: {data.Params.block}</strong>
 			<br/>
 			<table class="table table-sm table-bordered table-hover">

@@ -6,6 +6,7 @@ const TradeDetailView = ({ data }) => {
 		<div class="p-2">
 			<strong class="bold">Destination: {data.Destination}</strong>
 			<br/>
+			<pre>Id: {data.ID}</pre>
 			<pre>Amount: {data.Params.amount}</pre>
 			<pre>Base: {data.Params.base}</pre>
 			<pre>Quote: {data.Params.quote}</pre>

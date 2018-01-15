@@ -47,19 +47,28 @@ const PendingActivitiesView = ({ pendingActivities }) => {
         freezeWhenExpanded={true}
         noDataText={'No pending action'}
         minRows={3}
-        defaultPageSize={5}
+        defaultPageSize={10}
         className="-striped -highlight"
         SubComponent={SubComponent}
         columns={[
           {
-            Header: "First Name",
+            Header: "Action",
             id: "Action",
             accessor: d => displayActionName(d.Action)
           },
           {
-            Header: "ID",
-            id: "ID",
-            accessor: d => minimizeId(d.ID)
+            Header: "Amount",
+            id: "Amount",
+            accessor: d => (d.Params.amount)
+          },
+          {
+            Header: "Token",
+            id: "Token",
+            accessor: d => (d.Params.token)
+          },
+          {
+            Header: "Destination",
+            accessor: "Destination"
           },
           {
             Header: "Status",
@@ -73,10 +82,6 @@ const PendingActivitiesView = ({ pendingActivities }) => {
                 accessor: "MiningStatus"
               }
             ]
-          },
-          {
-            Header: "Destination",
-            accessor: "Destination"
           },
           {
             Header: "Expand",

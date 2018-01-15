@@ -47,28 +47,28 @@ export default class BaseEthereumProvider {
         to: this.wrapperAddress,
         data: dataAbi
       })
-      .then((data) => {
-        try {
-          var dataMapped = this.rpc.eth.abi.decodeParameters([
-            {
-              type: 'uint256[]',
-              name: 'expectedPrice'
-            },
-            {
-              type: 'uint256[]',
-              name: 'slippagePrice'
-            }
-          ], data)
-          resolve(dataMapped)
-        } catch (e) {
-          console.log(e)
+        .then((data) => {
+          try {
+            var dataMapped = this.rpc.eth.abi.decodeParameters([
+              {
+                type: 'uint256[]',
+                name: 'expectedPrice'
+              },
+              {
+                type: 'uint256[]',
+                name: 'slippagePrice'
+              }
+            ], data)
+            resolve(dataMapped)
+          } catch (e) {
+            console.log(e)
+            resolve([])
+          }
+        })
+        .catch((err) => {
+          console.log("GET request error")
           resolve([])
-        }
-      })
-      .catch((err) => {
-        console.log("GET request error")
-        resolve([])
-      })
+        })
     })
   }
 
@@ -104,14 +104,14 @@ export default class BaseEthereumProvider {
 
   sendToOtherEndpoint(url, method, data) {
     var fetchParams = {
-        // headers: {
-        //     'Accept': 'application/json, text/plain, */*',
-        //     'Content-Type': 'application/json'
-        // }
+      // headers: {
+      //     'Accept': 'application/json, text/plain, */*',
+      //     'Content-Type': 'application/json'
+      // }
     }
-    if(method == "POST") {
-        fetchParams.method = "POST"
-        fetchParams.body = data 
+    if (method == "POST") {
+      fetchParams.method = "POST"
+      fetchParams.body = data
     }
     return new Promise((resolve, reject) => {
       fetch(url, fetchParams)
