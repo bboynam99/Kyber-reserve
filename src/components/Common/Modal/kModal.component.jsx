@@ -6,10 +6,10 @@ const KModal = ({className, isOpen, label, content, onRequestClose}) => {
     let customStyles = {
         overlay: {
             position: 'fixed',
-            top: 50,
-            left: 100,
-            right: 100,
-            bottom: 50,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             backgroundColor: '#F4FbF9',
             zIndex: '1005',
             border: '2px solid #ddd',
