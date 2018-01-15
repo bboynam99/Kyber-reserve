@@ -94,11 +94,11 @@ var config = function(env){
         chunksSortMode: 'manual'
       }),
       new webpack.DefinePlugin({
-        'env': env && env.chain ? '"' + env.chain + '"' : '"kovan"',
-        // 'process.env': {
+        'process.env': {
+          chain: env && env.chain ? '"' + env.chain + '"' : '"kovan"'
           // HTTP_ENDPOINT: '\"' + process.env.HTTP_ENDPOINT + '\"',
           // EVALUTATE_ENDPOINT: '\"' + process.env.EVALUTATE_ENDPOINT + '\"'
-        // }
+        }
       })
     ]
   }
