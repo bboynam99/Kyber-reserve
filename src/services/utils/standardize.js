@@ -1,8 +1,8 @@
 import CONSTANTS from "../constants"
 import BigNumber from "bignumber.js"
 
-export function mappingTokenRate(token, data){
-  if(data && typeof data == 'object'){
+export function mappingTokenRate(token, data) {
+  if (data && typeof data == 'object') {
     let returnData = []       // array[{rate: 'Reserve', symbol: 'KNC/ETH', ask: (0.7697399673695822), bid: 0.8697399673695822}]
     Object.keys(data).map((exchangeId) => {
       returnData.push({
@@ -18,26 +18,26 @@ export function mappingTokenRate(token, data){
   }
 }
 
-export function mappingTokenBalance(data){
+export function mappingTokenBalance(data) {
   return Object.keys(CONSTANTS.SUPPORTED_EXCHANGE).map(exchangeName => {
     let tokenValue = data && typeof data == 'object' && data.Balance ? data.Balance : 0
 
-    return { 
+    return {
       exchange: CONSTANTS.SUPPORTED_EXCHANGE[exchangeName].name,
       value: tokenValue
     }
   })
 }
 
-export function mappingQty(data){
-  if(data && typeof data == 'object'){
-    return {current: data.current, target: data.target}
+export function mappingQty(data) {
+  if (data && typeof data == 'object') {
+    return { current: data.current, target: data.target }
   } else {
-    return {current: 0, target: 0}
+    return { current: 0, target: 0 }
   }
 }
 
-export function mappingAllRate(data){
+export function mappingAllRate(data) {
   let returnObj = {}
 
   Object.keys(data).map((pair) => {
@@ -66,9 +66,36 @@ export function mappingAllRate(data){
   return returnObj
 }
 
-export function mappingAllExchangeBalance(data){
+export function mappingKyberRate(data) {
+  if (!data) return null
   let returnObj = {}
-  
+
+  Object.keys(data).map(tokenSymbol => {
+    if (tokenSymbol.toLowerCase() == "eth") return
+
+    let dataRate = data[tokenSymbol]
+    let bigBaseBuy = new BigNumber(dataRate.BaseBuy.toString())
+    let bigCompactBuy = new BigNumber(dataRate.CompactBuy.toString())
+    let ask = (bigCompactBuy.div(1000).add(1)).times(bigBaseBuy).pow(-1)
+
+    let bigBaseSell = new BigNumber(dataRate.BaseSell.toString())
+    let bigCompactSell = new BigNumber(dataRate.CompactSell.toString())
+    let bid = (bigCompactSell.div(1000).add(1)).times(bigBaseSell)
+
+    returnObj[tokenSymbol] = {
+      exchange: "Kyber Network",
+      symbol: tokenSymbol + "/ETH",
+      ask: { Quantity: 0, Rate: ask.toString() },
+      bid: { Quantity: 0, Rate: bid.toString() }
+    }
+  })
+
+  return returnObj
+}
+
+export function mappingAllExchangeBalance(data) {
+  let returnObj = {}
+
   Object.keys(CONSTANTS.SUPPORTED_TOKENS).map((tokenSymbol) => {
     let tokenBalanceObj = {}
     Object.keys(CONSTANTS.SUPPORTED_EXCHANGE).map(exchangeSymbol => {
@@ -94,11 +121,11 @@ export function mappingAllExchangeBalance(data){
   //   POLONIEX: {..}
   // }
   // ...
-  
+
   return returnObj
 }
 
-export function mappingAllReserveBalance(data){
+export function mappingAllReserveBalance(data) {
   let returnObj = {}
   Object.keys(CONSTANTS.SUPPORTED_TOKENS).map((tokenSymbol) => {
     returnObj[tokenSymbol] = data[tokenSymbol].Balance ? data[tokenSymbol].Balance.toString() : 0
@@ -112,9 +139,9 @@ export function mappingAllReserveBalance(data){
   return returnObj
 }
 
-function shortRateASC(arrayObj){
-  if(arrayObj && Array.isArray(arrayObj) && arrayObj.length){
-    return arrayObj.sort((a,b) => {
+function shortRateASC(arrayObj) {
+  if (arrayObj && Array.isArray(arrayObj) && arrayObj.length) {
+    return arrayObj.sort((a, b) => {
       return a.Rate - b.Rate
     })
   } else {
@@ -122,9 +149,9 @@ function shortRateASC(arrayObj){
   }
 }
 
-function shortRateDESC(arrayObj){
-  if(arrayObj && Array.isArray(arrayObj) && arrayObj.length){
-    return arrayObj.sort((a,b) => {
+function shortRateDESC(arrayObj) {
+  if (arrayObj && Array.isArray(arrayObj) && arrayObj.length) {
+    return arrayObj.sort((a, b) => {
       return b.Rate - a.Rate
     })
   } else {
@@ -132,8 +159,8 @@ function shortRateDESC(arrayObj){
   }
 }
 
-export function mappingRateForDepthChart(data){
-  if(data){
+export function mappingRateForDepthChart(data) {
+  if (data) {
     let askTmp = 0
     let bidTmp = 0
     let bidArray = shortRateDESC(data.bid).map((b) => {

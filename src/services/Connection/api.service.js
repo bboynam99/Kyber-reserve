@@ -67,4 +67,8 @@ export default class ApiService{
     }
     return this.provider.call("send")("cancelorder/" + exchangeId, "POST", postData)
   }
+
+  getAllKyberRate(){
+    return this.provider.call("send")("getrates", "GET", null)
+  }
 }

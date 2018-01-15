@@ -1,7 +1,8 @@
 import Token from "./token"
 import CONSTANTS from "./constants"
 import { mappingTokenRate, mappingTokenBalance, mappingQty, 
-  mappingAllRate, mappingAllExchangeBalance, mappingAllReserveBalance} from "./utils/standardize"
+  mappingAllRate, mappingAllExchangeBalance, mappingAllReserveBalance,
+  mappingKyberRate } from "./utils/standardize"
 import { BigNumber } from "bignumber.js";
 
 export default class TokensService {
@@ -28,12 +29,20 @@ export default class TokensService {
     return service.getAuthData()
   }
 
+  getAllKyberRate(service){
+    return service.getAllKyberRate()
+  }
+
   async syncAll(service) {
-    let [allRate, allBalance] = await Promise.all([
+    let [allRate, allBalance, allKyberRate] = await Promise.all([
       this.getAllRate(service),
-      this.getAllBalance(service)
+      this.getAllBalance(service),
+      this.getAllKyberRate(service)
     ])
+
     let mappedAllRate = mappingAllRate(allRate.data)
+
+    let mappedAllKyberRate = mappingKyberRate(allKyberRate.data)
 
     let mappedAllExchangeBalance = mappingAllExchangeBalance(allBalance.data.ExchangeBalances)
 
@@ -42,6 +51,10 @@ export default class TokensService {
     Object.keys(CONSTANTS.SUPPORTED_TOKENS).forEach((tokenSymbol) => {
       if(mappedAllRate[tokenSymbol]) {
         dataToken[tokenSymbol].setRates(mappedAllRate[tokenSymbol])
+      }
+
+      if(mappedAllKyberRate[tokenSymbol]) {
+        dataToken[tokenSymbol].setKyberRate(mappedAllKyberRate[tokenSymbol])
       }
 
       if(mappedAllExchangeBalance[tokenSymbol]) {

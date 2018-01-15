@@ -19,13 +19,31 @@ const TokenRateView = ({ data, showMore }) => {
 								<th>Depth</th>
 							</tr>
 						</thead>
+						{data.kyberRate && data.kyberRate.bid && data.kyberRate.ask ? (
+							<tbody>
+								<tr>
+									<td class="align-middle">{data.kyberRate.exchange.toUpperCase()}</td>
+									<td class="align-middle">{data.kyberRate.symbol}</td>
+									{data.kyberRate.bid ? <td class="align-middle">{roundingNumber(data.kyberRate.bid.Rate)}</td> : <td />}
+									{data.kyberRate.ask ? <td class="align-middle">{roundingNumber(data.kyberRate.ask.Rate)}</td> : <td />}
+									<td class="align-middle">
+									</td>
+								</tr>
+							</tbody>
+						) : <tbody>
+								<tr>
+									<td></td>
+								</tr>
+							</tbody>}
+
+
 						{data.rates ? data.rates.map((rate, k) =>
-							<tbody key={k} className={showMore || k < 1 ? "" : "d-none"}>
+							<tbody key={k} className={showMore ? "" : "d-none"}>
 								<tr>
 									<td class="align-middle">{rate.exchange.toUpperCase()}</td>
 									<td class="align-middle">{rate.symbol}</td>
-									{ rate.bid ? <td class="align-middle">{roundingNumber(rate.bid[0].Rate)}</td> : <td />}
-									{ rate.ask ? <td class="align-middle">{roundingNumber(rate.ask[0].Rate)}</td> : <td />}
+									{rate.bid ? <td class="align-middle">{roundingNumber(rate.bid[0].Rate)}</td> : <td />}
+									{rate.ask ? <td class="align-middle">{roundingNumber(rate.ask[0].Rate)}</td> : <td />}
 									<td class="align-middle">
 										<DepthChart
 											rate={rate}

@@ -14,6 +14,7 @@ export default class Token {
     totalQty = 0,
     totalTarget = 0,
     rates = CONSTANTS.INNIT_TOKEN_RATES,                                  // { bittrex: {ask: xxx, bid: xxxx}, ...}
+    kyberRate = CONSTANTS.INNIT_KYBER_RATE,
     exchangeBalance = CONSTANTS.INNIT_TOKEN_EXCHANGE_BALANCE,             // { bittrex: 0, binance: 0, ...}
     estimateEthValue = 0,
   ){
@@ -26,6 +27,8 @@ export default class Token {
     this.totalTarget = totalTarget
 
     this.rates = rates
+    this.kyberRate = kyberRate
+
     this.exchangeBalance = exchangeBalance
 
     this.totalQty = this.caculateTotalBalance()
@@ -35,6 +38,10 @@ export default class Token {
 
   setRates(rates){
     this.rates = rates
+  }
+
+  setKyberRate(kyberRate){
+    this.kyberRate = kyberRate
   }
 
   setExchangeBalance(exchangeBalance){
