@@ -3,9 +3,10 @@ import React from 'react';
 import HttpProvider from "./httpProvider"
 import WsProvider from "./wsProvider"
 
+import BLOCKCHAIN_INFO from "../../../../env"
 // import { validURL } from "../../../services/utils/validator"
-const httpEndpoint = process.env.HTTP_ENDPOINT && process.env.HTTP_ENDPOINT != "undefined" ? process.env.HTTP_ENDPOINT : "http://52.77.19.90:8000/"
-const wsEndpoint = "ws://52.77.19.90:8000/"
+const httpEndpoint = BLOCKCHAIN_INFO.endpoint.http_endpoint
+const wsEndpoint = BLOCKCHAIN_INFO.endpoint.ws_endpoint
 
 export default class BaseProvider extends React.Component {
   constructor(type) {

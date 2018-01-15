@@ -51,9 +51,9 @@ module.exports = function(env){
       new webpack.DefinePlugin({
         'env': env && env.chain ? '"' + env.chain + '"' : '"kovan"',
         'process.env': {
-          NODE_ENV: '"production"',
-          HTTP_ENDPOINT: '\"' + process.env.HTTP_ENDPOINT + '\"',
-          EVALUTATE_ENDPOINT: '\"' + process.env.EVALUTATE_ENDPOINT + '\"'
+          NODE_ENV: '"production"'
+          // HTTP_ENDPOINT: '\"' + process.env.HTTP_ENDPOINT + '\"',
+          // EVALUTATE_ENDPOINT: '\"' + process.env.EVALUTATE_ENDPOINT + '\"'
         }
       }),
       // new webpack.optimize.UglifyJsPlugin({

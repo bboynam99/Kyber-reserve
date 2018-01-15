@@ -1,6 +1,8 @@
 import Provider from "./provider"
+import BLOCKCHAIN_INFO from "../../../env"
 
-const evaluateEndpoint = process.env.EVALUTATE_ENDPOINT && process.env.EVALUTATE_ENDPOINT != "undefined" ? process.env.EVALUTATE_ENDPOINT :"http://192.168.27.94:9001/"
+// const evaluateEndpoint = process.env.EVALUTATE_ENDPOINT && process.env.EVALUTATE_ENDPOINT != "undefined" ? process.env.EVALUTATE_ENDPOINT :"http://192.168.27.94:9001/"
+const evaluateEndpoint = BLOCKCHAIN_INFO.endpoint.evaluate_endpoint
 
 export default class ApiService{
   constructor(){

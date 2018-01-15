@@ -1,7 +1,7 @@
 FROM node:8.9.4
 
-ARG HTTP_ENDPOINT
-ARG EVALUTATE_ENDPOINT
+#ARG HTTP_ENDPOINT
+#ARG EVALUTATE_ENDPOINT
 # The base node image sets a very verbose log level.
 # ENV NPM_CONFIG_LOGLEVEL warn
 
