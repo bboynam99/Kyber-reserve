@@ -118,8 +118,8 @@
     "api_key": "D8YAEQ3V4THAPDA9YSB1YGA1QY9KAMHY6M"
   },
   "endpoint": {
-    "http_endpoint": "http://192.168.27.94:8000/",
-    "ws_endpoint": "ws://192.168.27.94:8000/",
+    "http_endpoint": "http://52.77.19.90:8000/",
+    "ws_endpoint": "ws://52.77.19.90:8000/",
     "evaluate_endpoint": "http://192.168.27.94:9001/"
   }
 }

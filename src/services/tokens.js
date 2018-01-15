@@ -22,20 +22,22 @@ export default class TokensService {
   }
 
   getAllRate(service) {
-    return service.getPriceAllBaseQuotePair()
+    return service.getPriceAllBaseQuotePair().catch(this.handleNetErr)
   }
 
   getAllBalance(service) {
-    return service.getAuthData()
+    return service.getAuthData().catch(this.handleNetErr)
   }
 
   getAllKyberRate(service){
-    return service.getAllKyberRate()
+    return service.getAllKyberRate().catch(this.handleNetErr)
   }
 
   getEvaluate(service){
-    return service.getEvaluate()
+    return service.getEvaluate().catch(this.handleNetErr)
   }
+
+  handleNetErr = function(e) { return e };
 
   async syncAll(service) {
     let [allRate, allBalance, allKyberRate, evaluate] = await Promise.all([
