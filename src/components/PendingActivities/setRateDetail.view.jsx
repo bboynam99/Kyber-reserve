@@ -22,7 +22,7 @@ const SetRateDetailView = ({ data }) => {
 						return (
 							<tr key={i}>
 								<td>{token}</td>
-								<td>{toT(data.Params.buys[i], 18, 5)}</td>
+								<td>{toT(data.Params.buys[i], 18, 5, true)}</td>
 								<td>{toT(data.Params.sells[i], 18, 5)}</td>
 
 								{/* <td>{toT(data.Params.sells[i], CONSTANTS.SUPPORTED_TOKENS.ETH.decimal, 5)}</td> */}
