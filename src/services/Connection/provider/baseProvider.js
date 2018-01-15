@@ -102,4 +102,30 @@ export default class BaseEthereumProvider {
     })
   }
 
+  sendToOtherEndpoint(url, method, data) {
+    var fetchParams = {
+        // headers: {
+        //     'Accept': 'application/json, text/plain, */*',
+        //     'Content-Type': 'application/json'
+        // }
+    }
+    if(method == "POST") {
+        fetchParams.method = "POST"
+        fetchParams.body = data 
+    }
+    return new Promise((resolve, reject) => {
+      fetch(url, fetchParams)
+        .then((response) => {
+          if (!response.ok) {
+            reject(response.statusText);
+          } else {
+            resolve(response.json())
+          }
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  }
+
 }

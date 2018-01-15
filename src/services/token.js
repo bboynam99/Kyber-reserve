@@ -63,6 +63,14 @@ export default class Token {
     return ethBalance
   }
 
+  setReserveTarget(reserveTarget){
+    this.reserveTarget = reserveTarget
+  }
+
+  setTotalTarget(totalTarget){
+    this.totalTarget = totalTarget
+  }
+
   caculateTotalBalance(balances){
     let flattenBalances = flatten(this.exchangeBalance)
     return Object.values(flattenBalances)

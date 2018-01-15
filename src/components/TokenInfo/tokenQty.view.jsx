@@ -9,10 +9,16 @@ import { BigNumber } from "bignumber.js";
 const TokenQtyView = ({data, totalAllQty}) => {
   let percent = 0
 
-  if(totalAllQty && totalAllQty !== '0'){
-    let bigEthValue = new BigNumber(data.estimateEthValue.toString())
-    let bigTotalAll = new BigNumber(totalAllQty)
-    percent = bigEthValue.div(bigTotalAll).times(100).round(2).toString()
+  // if(totalAllQty && totalAllQty !== '0'){
+  //   let bigEthValue = new BigNumber(data.estimateEthValue.toString())
+  //   let bigTotalAll = new BigNumber(totalAllQty)
+  //   percent = bigEthValue.div(bigTotalAll).times(100).round(2).toString()
+  // }
+  console.log(data)
+  if(data.totalQty && data.totalTarget){
+    let bigTotalQty = new BigNumber(data.totalQty.toString())
+    let bigTotalTarget = new BigNumber(data.totalTarget.toString())
+    percent = bigTotalQty.div(bigTotalTarget).times(100).round(2).toString()
   }
     
 

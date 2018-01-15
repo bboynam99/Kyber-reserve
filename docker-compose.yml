@@ -5,6 +5,7 @@ services:
       context: .
       args:
         HTTP_ENDPOINT: http://52.77.19.90:8000/
+        EVALUTATE_ENDPOINT: http://52.77.19.90:9001/
     ports:
      - "9999:9999" 
     volumes:

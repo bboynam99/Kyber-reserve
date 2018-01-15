@@ -33,11 +33,16 @@ export default class TokensService {
     return service.getAllKyberRate()
   }
 
+  getEvaluate(service){
+    return service.getEvaluate()
+  }
+
   async syncAll(service) {
-    let [allRate, allBalance, allKyberRate] = await Promise.all([
+    let [allRate, allBalance, allKyberRate, evaluate] = await Promise.all([
       this.getAllRate(service),
       this.getAllBalance(service),
-      this.getAllKyberRate(service)
+      this.getAllKyberRate(service),
+      this.getEvaluate(service)
     ])
 
     let mappedAllRate = mappingAllRate(allRate.data)
@@ -47,6 +52,9 @@ export default class TokensService {
     let mappedAllExchangeBalance = mappingAllExchangeBalance(allBalance.data.ExchangeBalances)
 
     let mappedAllReserveBalance = mappingAllReserveBalance(allBalance.data.ReserveBalances)
+
+    let allTarget = evaluate.evaluate ? evaluate.evaluate.target : null
+
     let dataToken = this.tokens.data
     Object.keys(CONSTANTS.SUPPORTED_TOKENS).forEach((tokenSymbol) => {
       if(mappedAllRate[tokenSymbol]) {
@@ -63,6 +71,11 @@ export default class TokensService {
 
       if(mappedAllReserveBalance[tokenSymbol]){
         dataToken[tokenSymbol].setReserveBalance(mappedAllReserveBalance[tokenSymbol])
+      }
+
+      if(allTarget && allTarget[tokenSymbol]){
+        dataToken[tokenSymbol].setReserveTarget(allTarget[tokenSymbol].reserve_target)
+        dataToken[tokenSymbol].setTotalTarget(allTarget[tokenSymbol].target)
       }
     })
 

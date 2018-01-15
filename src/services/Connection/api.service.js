@@ -1,5 +1,7 @@
 import Provider from "./provider"
 
+const evaluateEndpoint = process.env.EVALUTATE_ENDPOINT && process.env.EVALUTATE_ENDPOINT != "undefined" ? process.env.EVALUTATE_ENDPOINT :"http://192.168.27.94:9001/"
+
 export default class ApiService{
   constructor(){
     this.provider = new Provider('http')
@@ -70,5 +72,9 @@ export default class ApiService{
 
   getAllKyberRate(){
     return this.provider.call("send")("getrates", "GET", null)
+  }
+
+  getEvaluate(){
+    return this.provider.call("sendToOtherEndpoint")(evaluateEndpoint + "evaluate", "GET", null)
   }
 }

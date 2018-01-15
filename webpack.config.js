@@ -96,7 +96,8 @@ var config = function(env){
       new webpack.DefinePlugin({
         'env': env && env.chain ? '"' + env.chain + '"' : '"kovan"',
         'process.env': {
-          'HTTP_ENDPOINT': process.env.HTTP_ENDPOINT
+          HTTP_ENDPOINT: '\"' + process.env.HTTP_ENDPOINT + '\"',
+          EVALUTATE_ENDPOINT: '\"' + process.env.EVALUTATE_ENDPOINT + '\"'
         }
       })
     ]
