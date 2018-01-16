@@ -27,7 +27,7 @@ export default class LineChart extends Component {
         "title": "Buy",
         "balloonText": "[[title]]: <b>[[value]]</b>",
         "bullet": "round",
-        "bulletSize": 10,
+        "bulletSize": 5,
         "bulletBorderColor": "#ffffff",
         "bulletBorderAlpha": 1,
         "bulletBorderThickness": 2,
@@ -36,7 +36,7 @@ export default class LineChart extends Component {
         "title": "Sell",
         "balloonText": "[[title]]: <b>[[value]]</b>",
         "bullet": "round",
-        "bulletSize": 10,
+        "bulletSize": 5,
         "bulletBorderColor": "#ffffff",
         "bulletBorderAlpha": 1,
         "bulletBorderThickness": 2,
@@ -53,7 +53,10 @@ export default class LineChart extends Component {
         "gridAlpha": 0,
         "labelsEnabled": false
       },
-      "legend": {}
+      "legend": {
+        "spacing": 100,
+        "valueWidth": 70
+      }
     };
 
 
