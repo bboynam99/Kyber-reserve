@@ -14,7 +14,7 @@ const HeaderView = () => {
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarToggler">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <Navigation/>
+          <Navigation />
         </nav>
       </div>
     </header>

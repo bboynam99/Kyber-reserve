@@ -22,22 +22,20 @@ export default class TokensService {
   }
 
   getAllRate(service) {
-    return service.getPriceAllBaseQuotePair().catch(this.handleNetErr)
+    return service.getPriceAllBaseQuotePair()
   }
 
   getAllBalance(service) {
-    return service.getAuthData().catch(this.handleNetErr)
+    return service.getAuthData()
   }
 
   getAllKyberRate(service){
-    return service.getAllKyberRate().catch(this.handleNetErr)
+    return service.getAllKyberRate()
   }
 
   getEvaluate(service){
-    return service.getEvaluate().catch(this.handleNetErr)
+    return service.getEvaluate()
   }
-
-  handleNetErr = function(e) { return e };
 
   async syncAll(service) {
     let [allRate, allBalance, allKyberRate, evaluate] = await Promise.all([
@@ -81,14 +79,15 @@ export default class TokensService {
       }
     })
 
-    if(dataToken){
-      this.tokens.totalAllQty = Object.values(dataToken)
-      .map(x => new BigNumber(x.estimateEthValue))
-      .reduce((a,b) => {
-        return a.add(b)
-      }, new BigNumber(0))
-      .toString()
-    }
+    //// Caculate all Qty of all token in portfolio
+    // if(dataToken){
+    //   this.tokens.totalAllQty = Object.values(dataToken)
+    //   .map(x => new BigNumber(x.estimateEthValue))
+    //   .reduce((a,b) => {
+    //     return a.add(b)
+    //   }, new BigNumber(0))
+    //   .toString()
+    // }
 
     this.tokens.data = dataToken
     this.tokens.pendingActivities = allBalance.data.PendingActivities

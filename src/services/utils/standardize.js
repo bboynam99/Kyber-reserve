@@ -1,6 +1,8 @@
 import CONSTANTS from "../constants"
 import BigNumber from "bignumber.js"
 
+import { toT } from "./converter"
+
 export function mappingTokenRate(token, data) {
   if (data && typeof data == 'object') {
     let returnData = []       // array[{rate: 'Reserve', symbol: 'KNC/ETH', ask: (0.7697399673695822), bid: 0.8697399673695822}]
@@ -182,4 +184,36 @@ export function mappingRateForDepthChart(data) {
   } else {
     return []
   }
+}
+
+
+export function filterSetRateAction(arrayAction){
+  let returnArry = []
+  if(arrayAction && Array.isArray(arrayAction) && arrayAction.length){
+    returnArry = arrayAction.filter(item => {
+      return item.Action.toLowerCase() == "set_rates"
+    })
+  }
+  return returnArry
+}
+
+export function mappingSetRateHistory(arraySetRate){
+  let ratesObj = {}
+  if(arraySetRate && Array.isArray(arraySetRate) && arraySetRate.length){
+    arraySetRate.map(item => {
+      item.Params.tokens.map((tokenSymbol, index) => {
+        if(!ratesObj[tokenSymbol]) ratesObj[tokenSymbol] = []
+
+        ratesObj[tokenSymbol].push({
+          // index: index.toString(),
+          buy: toT(item.Params.buys[index], 18, 8, true),
+          sell: toT(item.Params.sells[index], 18, 8)
+        })
+        // ratesObj[tokenSymbol].buys.push(item.Params.buys[index])
+        // ratesObj[tokenSymbol].sells.push(item.Params.sells[index])
+      })
+    })
+  }
+
+  return ratesObj
 }

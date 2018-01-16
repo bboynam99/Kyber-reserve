@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const NavigationView = (props) => {
     return (
@@ -8,9 +9,7 @@ const NavigationView = (props) => {
                     let active = props.menuActive === i ? 'active' : '';
                     return (
                         <li className={"nav-item " + active} key={i}>
-                            <a className='nav-link' href="#f">
-                                {item}
-                            </a>
+                            <NavLink activeClassName="active" className='nav-link' to={item.path}>{item.name}</NavLink>
                         </li>
                     )
                 })}
