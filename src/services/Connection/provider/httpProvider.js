@@ -46,6 +46,10 @@ export default class HttpProvider extends BaseEthereumProvider {
         'Content-Type': 'application/x-www-form-urlencoded',
         'signed': signHeader
       }
+    } else {
+      fetchParams.headers= {
+        'Content-Type': 'application/json'
+      }
     }
 
     if (method == "POST") {
