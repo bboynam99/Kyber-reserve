@@ -20,7 +20,7 @@ export default class RatesService {
     let allActivities = await this.getAllActivities(apiService, timeStamp)
     let setRateActionList = filterSetRateAction(allActivities.data)
 
-    let stretedData = stretchArray(setRateActionList, 10)
+    let stretedData = stretchArray(setRateActionList, 15)
 
     let mappedRateTokens = mappingSetRateHistory(stretedData)
 

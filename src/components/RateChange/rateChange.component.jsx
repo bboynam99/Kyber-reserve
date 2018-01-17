@@ -33,6 +33,11 @@ export default class RateChange extends Component {
     this.intervalUpdateRate = setInterval(this.updateRate, 30000)
   }
 
+  componentWillUnmount(){
+    clearInterval(this.intervalUpdateRate)
+  }
+
+
   updateRate = () => {
     this.ratesService.syncAllRates(this.props.apiService, this.currentTimeStamp).then(data => {
       if(!data.data) return 
