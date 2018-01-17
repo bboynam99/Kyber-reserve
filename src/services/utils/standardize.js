@@ -218,3 +218,20 @@ export function mappingSetRateHistory(arraySetRate){
 
   return ratesObj
 }
+
+var sleep = time => new Promise(resolve => setTimeout(resolve, time))
+export function poll(promiseFn, time){
+  return promiseFn().then(
+    sleep(time).then(
+      () => poll(promiseFn, time)
+    )
+  )
+} 
+
+// export function poll(promiseFn, time){
+//   return sleep(time).then(
+//     () => promiseFn().then(
+//       () => poll(promiseFn, time)
+//     )
+//   )
+// } 

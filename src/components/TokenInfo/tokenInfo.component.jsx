@@ -4,6 +4,8 @@ import TokenInfoView from "./tokenInfo.view"
 import ApiService from "../../services/Connection/api.service"
 import TokensService from "../../services/tokens"
 
+import { poll } from "../../services/utils/standardize"
+
 @connect((store) => {
   const apiService = store.global.apiService
   return { apiService }
@@ -23,6 +25,7 @@ class TokenInfo extends Component {
   }
   componentDidMount(){
     this.syncAllTokenData()
+    // this.intervalFetchTokenData = poll(this.syncAllTokenData, 10000)
     this.intervalFetchTokenData = setInterval(this.syncAllTokenData, 10000)
   }
 

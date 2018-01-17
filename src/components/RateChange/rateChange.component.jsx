@@ -5,6 +5,8 @@ import RateChangeView from "./rateChange.view"
 
 import RatesService from "../../services/rates"
 
+import { poll } from "../../services/utils/standardize"
+
 @connect((store) => {
   const apiService = store.global.apiService
   return { apiService }
@@ -25,7 +27,7 @@ export default class RateChange extends Component {
 
   componentDidMount(){
     this.ratesService.syncAllRates(this.props.apiService).then(data => {
-      this.currentTimeStamp= data.currentTimeStamp
+      this.currentTimeStamp = data.currentTimeStamp
       this.setState({
         data: data.data
       })
