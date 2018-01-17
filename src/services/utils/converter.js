@@ -79,6 +79,7 @@ function acceptableTyping(number) {
 }
 
 export function toT(number, decimal, round, reverse) {
+  if(!number) return 0
   var bigNumber = new BigNumber(number.toString())
   var result
   if (bigNumber == 'NaN' || bigNumber == 'Infinity') {

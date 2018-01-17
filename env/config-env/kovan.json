@@ -122,5 +122,5 @@
     "ws_endpoint": "ws://192.168.24.228:8000/",
     "evaluate_endpoint": "http://192.168.24.228:9001/"
   },
-  "signRequest": true
+  "signRequest": false
 }

@@ -18,7 +18,9 @@ export default class RateChange extends Component {
     super();
     this.ratesService = new RatesService()
     this.intervalUpdateRate
-    this.currentTimeStamp
+    let d = new Date()
+    d.setDate(d.getDate()-1);
+    this.currentTimeStamp = d.getTime()
     this.state = {
       data: {},
       selected: "KNC"
@@ -26,7 +28,7 @@ export default class RateChange extends Component {
   }
 
   componentDidMount(){
-    this.ratesService.syncAllRates(this.props.apiService).then(data => {
+    this.ratesService.syncAllRates(this.props.apiService, this.currentTimeStamp).then(data => {
       this.currentTimeStamp = data.currentTimeStamp
       this.setState({
         data: data.data
@@ -44,12 +46,13 @@ export default class RateChange extends Component {
     this.ratesService.syncAllRates(this.props.apiService, this.currentTimeStamp).then(data => {
       if(!data.data) return 
 
-      this.currentTimeStamp= data.currentTimeStamp
+      console.log("++++++++++")
+      this.currentTimeStamp = data.currentTimeStamp
       let newData = {}
       Object.keys(data.data).map( tokenSymbol => {
         let newLength = data.data[tokenSymbol].length
-        let updatedObjdata = [ ...data.data[tokenSymbol], ...this.state.data[tokenSymbol]]
-        updatedObjdata.splice(-newLength)
+        let updatedObjdata = [ ...this.state.data[tokenSymbol], ...data.data[tokenSymbol]]
+        if(this.state.data[tokenSymbol] && this.state.data[tokenSymbol].length > 100) updatedObjdata.splice(0, newLength)
         newData[tokenSymbol] = updatedObjdata
       })
 
