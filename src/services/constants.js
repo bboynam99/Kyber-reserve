@@ -103,12 +103,12 @@ const SUPPORTED_TOKENS = {
   //   decimal: 18,
   // },
 
-  // SALT: {
-  //   name: "Salt",
-  //   symbol: "SALT",
-  //   icon: "salt.svg",
-  //   decimal: 18,
-  // },
+  SALT: {
+    name: "Salt",
+    symbol: "SALT",
+    icon: "salt.svg",
+    decimal: 8,
+  },
   SNT: {
     name: "Status",
     symbol: "SNT",
