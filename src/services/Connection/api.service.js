@@ -9,7 +9,10 @@ export default class ApiService{
     this.provider = new Provider('http')
   }
   
-  handleNetErr = function(e) { return e };
+  handleNetErr = function(e) {
+    console.log(e)
+    return e
+   };
 
   getPriceBaseQuotePair(base, quote){
     return this.provider.call("send")('prices/' + base + '/' + quote, "GET", null).catch(this.handleNetErr)
@@ -78,8 +81,9 @@ export default class ApiService{
     return this.provider.call("send")("getrates", "GET", null).catch(this.handleNetErr)
   }
 
-  getAllActivities(){
-    return this.provider.call("send")("activities", "GET", null).catch(this.handleNetErr)
+  getAllActivities(timeStamp){
+    let path = timeStamp ? "activities?fromTime=" + timeStamp : "activities"
+    return this.provider.call("send")(path, "GET", null).catch(this.handleNetErr)
   }
 
   getEvaluate(){

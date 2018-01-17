@@ -6,7 +6,6 @@ import IMAGE_ICON from "../../assets/img"
 import { LineChart } from "../Common"
 
 const RateChangeView = ({ data, selected, selectChange }) => {
-  console.log(data)
   return (
     <section>
       <div>

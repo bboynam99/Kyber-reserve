@@ -11,26 +11,25 @@ export default class RatesService {
       data: {},
     }
   }
-  
 
-  getAllActivities(apiService){
-    return apiService.getAllActivities()
+  getAllActivities(apiService, timeStamp){
+    return apiService.getAllActivities(timeStamp)
   }
 
-  async syncAllRates(apiService){
-    let allActivities = await this.getAllActivities(apiService)
+  async syncAllRates(apiService, timeStamp){
+    let allActivities = await this.getAllActivities(apiService, timeStamp)
     let setRateActionList = filterSetRateAction(allActivities.data)
 
     let stretedData = stretchArray(setRateActionList, 10)
 
     let mappedRateTokens = mappingSetRateHistory(stretedData)
 
-    
+    let currentTimeStamp = setRateActionList && setRateActionList.length ? setRateActionList[0].ID.split('|')[0] : 0
 
-
-    return mappedRateTokens
+    return {
+      data: mappedRateTokens,
+      currentTimeStamp: currentTimeStamp
+    }
   }
-
-
 
 }

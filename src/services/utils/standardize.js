@@ -42,20 +42,21 @@ export function mappingQty(data) {
 export function mappingAllRate(data) {
   let returnObj = {}
 
-  Object.keys(data).map((pair) => {
-    let tokenSymbol = pair.split('-')[0]
-    let pairData = data[pair]
-
-    returnObj[tokenSymbol] = Object.keys(pairData).map((exchangeName) => (
-      {
-        exchange: exchangeName,
-        symbol: tokenSymbol + "/ETH",
-        ask: pairData[exchangeName].Asks,
-        bid: pairData[exchangeName].Bids
-      }
-    ))
-  })
-
+  if(data){
+    Object.keys(data).map((pair) => {
+      let tokenSymbol = pair.split('-')[0]
+      let pairData = data[pair]
+  
+      returnObj[tokenSymbol] = Object.keys(pairData).map((exchangeName) => (
+        {
+          exchange: exchangeName,
+          symbol: tokenSymbol + "/ETH",
+          ask: pairData[exchangeName].Asks,
+          bid: pairData[exchangeName].Bids
+        }
+      ))
+    })
+  }
   // {
   //   ADX: {
   //     exchange: "bittrex",
@@ -204,7 +205,7 @@ export function mappingSetRateHistory(arraySetRate){
       item.Params.tokens.map((tokenSymbol, index) => {
         if(!ratesObj[tokenSymbol]) ratesObj[tokenSymbol] = []
 
-        ratesObj[tokenSymbol].push({
+        ratesObj[tokenSymbol].unshift({
           // index: index.toString(),
           buy: toT(item.Params.buys[index], 18, 8, true),
           sell: toT(item.Params.sells[index], 18, 8)
