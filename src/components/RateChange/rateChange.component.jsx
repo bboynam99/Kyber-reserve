@@ -29,7 +29,8 @@ export default class RateChange extends Component {
 
   componentDidMount(){
     this.ratesService.syncAllRates(this.props.apiService, this.currentTimeStamp).then(data => {
-      if(data.currentTimeStamp > this.currentTimeStamp) this.currentTimeStamp = data.currentTimeStamp
+      if(!data.currentTimeStamp || data.currentTimeStamp <= this.currentTimeStamp) return
+      this.currentTimeStamp = data.currentTimeStamp
       this.setState({
         data: data.data
       })
@@ -46,7 +47,8 @@ export default class RateChange extends Component {
     this.ratesService.syncAllRates(this.props.apiService, this.currentTimeStamp).then(data => {
       if(!data.data) return 
 
-      if(data.currentTimeStamp > this.currentTimeStamp) this.currentTimeStamp = data.currentTimeStamp
+      if(!data.currentTimeStamp || data.currentTimeStamp <= this.currentTimeStamp) return
+      this.currentTimeStamp = data.currentTimeStamp
       let newData = {}
       Object.keys(data.data).map( tokenSymbol => {
         let newLength = data.data[tokenSymbol].length
