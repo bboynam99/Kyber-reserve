@@ -17,6 +17,11 @@ export default class Token {
     kyberRate = CONSTANTS.INNIT_KYBER_RATE,
     exchangeBalance = CONSTANTS.INNIT_TOKEN_EXCHANGE_BALANCE,             // { bittrex: 0, binance: 0, ...}
     estimateEthValue = 0,
+
+    pendingAmount = {
+      deposit: 0,
+      withdraw: 0
+    }
   ){
     this.info = info
     this.persent = persent
@@ -31,9 +36,12 @@ export default class Token {
 
     this.exchangeBalance = exchangeBalance
 
+    this.pendingAmount = pendingAmount
+
     this.totalQty = this.caculateTotalBalance()
 
     this.estimateEthValue = this.caculateEthBalance(this.totalQty, this.rates)
+
   }
 
   setRates(rates){
@@ -53,6 +61,10 @@ export default class Token {
     this.reserveBalance = reserveBalance
     this.totalQty = this.caculateTotalBalance()
     this.estimateEthValue = this.caculateEthBalance(this.totalQty, this.rates)
+  }
+
+  setPendingAmount(pendingAmountData){
+    this.pendingAmount = pendingAmountData
   }
 
   caculateEthBalance = (balance, rates) => {

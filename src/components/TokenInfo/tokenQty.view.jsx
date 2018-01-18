@@ -19,8 +19,9 @@ const TokenQtyView = ({data, totalAllQty}) => {
     let bigTotalTarget = new BigNumber(data.totalTarget.toString())
     percent = bigTotalQty.div(bigTotalTarget).times(100).round(2).toString()
   }
-    
 
+  let totalReserveDisplay = +data.reserveBalance + +data.pendingAmount.withdraw
+  let totalDisplay = +data.totalQty + +data.pendingAmount.deposit
 
   return (
     <div>
@@ -42,7 +43,7 @@ const TokenQtyView = ({data, totalAllQty}) => {
             <span className="text-secondary">target</span>
           </div>
           <div className="value">
-            <span className="mr-auto" title={data.reserveBalance}>{roundingNumber(data.reserveBalance)}</span>
+            <span className="mr-auto" title={totalReserveDisplay}>{roundingNumber(totalReserveDisplay)}</span>
             <small title={data.reserveTarget}>/ {roundingNumber(data.reserveTarget)}</small>
           </div>
         </div>
@@ -52,7 +53,7 @@ const TokenQtyView = ({data, totalAllQty}) => {
             <span className="text-secondary">target</span>
           </div>
           <div className="value">
-            <span className="mr-auto" title={data.totalQty}>{roundingNumber(data.totalQty)}</span>
+            <span className="mr-auto" title={totalDisplay}>{roundingNumber(totalDisplay)}</span>
             <small title={data.totalTarget}>/ {roundingNumber(data.totalTarget)}</small>
           </div>
         </div>

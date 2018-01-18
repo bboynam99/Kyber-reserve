@@ -96,6 +96,32 @@ export function mappingKyberRate(data) {
   return returnObj
 }
 
+export function mappingAllPendingAmount(data){
+  let returnObj = {}
+  if (data && Array.isArray(data) && data.length) {
+    data.map(pendingAction => {
+      let actionName = pendingAction.Action
+
+      if(actionName == "deposit" || actionName == "withdraw"){
+        let tokenSymbol = pendingAction.Params.token
+        let amount = pendingAction.Params.amount
+
+        if(!returnObj[tokenSymbol]){
+          returnObj[tokenSymbol] = {
+            deposit: 0,
+            withdraw: 0
+          }
+        } 
+
+        if ((pendingAction.ExchangeStatus == "done" && pendingAction.MiningStatus !== "mined") || (pendingAction.ExchangeStatus !== "done" && pendingAction.MiningStatus == "mined")){
+          returnObj[tokenSymbol][actionName] += amount
+        } 
+      }
+    })
+  }
+  return returnObj
+}
+
 export function mappingAllExchangeBalance(data) {
   let returnObj = {}
 

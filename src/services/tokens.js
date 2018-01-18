@@ -2,7 +2,7 @@ import Token from "./token"
 import CONSTANTS from "./constants"
 import { mappingTokenRate, mappingTokenBalance, mappingQty, 
   mappingAllRate, mappingAllExchangeBalance, mappingAllReserveBalance,
-  mappingKyberRate } from "./utils/standardize"
+  mappingKyberRate, mappingAllPendingAmount } from "./utils/standardize"
 import { BigNumber } from "bignumber.js";
 
 export default class TokensService {
@@ -51,6 +51,8 @@ export default class TokensService {
 
     let mappedAllExchangeBalance = mappingAllExchangeBalance(allBalance.data.ExchangeBalances)
 
+    let mappedAllPendingAmount = mappingAllPendingAmount(allBalance.data.PendingActivities)
+
     let mappedAllReserveBalance = mappingAllReserveBalance(allBalance.data.ReserveBalances)
 
     let allTarget = evaluate.evaluate ? evaluate.evaluate.target : null
@@ -63,6 +65,10 @@ export default class TokensService {
 
       if(mappedAllKyberRate[tokenSymbol]) {
         dataToken[tokenSymbol].setKyberRate(mappedAllKyberRate[tokenSymbol])
+      }
+
+      if(mappedAllPendingAmount[tokenSymbol]){
+        dataToken[tokenSymbol].setPendingAmount(mappedAllPendingAmount[tokenSymbol])
       }
 
       if(mappedAllExchangeBalance[tokenSymbol]) {
