@@ -20,7 +20,7 @@ export default class RateChange extends Component {
     this.intervalUpdateRate
     let d = new Date()
     d.setDate(d.getDate()-1);
-    this.currentTimeStamp = d.getTime()
+    this.currentTimeStamp = d.getTime() * 1000000
     this.state = {
       data: {},
       selected: "KNC"

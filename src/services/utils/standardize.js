@@ -232,7 +232,8 @@ export function mappingSetRateHistory(arraySetRate){
         if(!ratesObj[tokenSymbol]) ratesObj[tokenSymbol] = []
 
         ratesObj[tokenSymbol].unshift({
-          // index: index.toString(),
+          date: new Date(Math.round(item.ID.split('|')[0] / 1000000)),
+          // date: new Date(Math.round(item.ID.split('|')[0] / 1000000)).toLocaleString(),
           buy: toT(item.Params.buys[index], 18, 8, true),
           sell: toT(item.Params.sells[index], 18, 8)
         })

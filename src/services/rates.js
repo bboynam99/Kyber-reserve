@@ -24,7 +24,7 @@ export default class RatesService {
     // setRateActionList = stretchArray(setRateActionList, 15)
     let mappedRateTokens = mappingSetRateHistory(setRateActionList)
 
-    let currentTimeStamp = setRateActionList && setRateActionList.length ? Math.round(setRateActionList[0].ID.split('|')[0] / 1000000) : 0
+    let currentTimeStamp = setRateActionList && setRateActionList.length ? Math.round(setRateActionList[0].ID.split('|')[0]) : 0
     return {
       data: mappedRateTokens,
       currentTimeStamp: currentTimeStamp

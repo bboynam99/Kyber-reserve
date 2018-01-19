@@ -33,8 +33,8 @@ export default class HttpProvider extends BaseEthereumProvider {
     }).join('&')
   }
 
-  send(path, method, data) {
-    data = data || {}
+  send(path, method, body) {
+    let data = body || {}
     let fetchParams = {}
 
     if(BLOCKCHAIN_INFO.signRequest){
@@ -48,14 +48,18 @@ export default class HttpProvider extends BaseEthereumProvider {
       }
     } else {
       fetchParams.headers= {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     }
 
-    if (method == "POST") {
-      fetchParams.method = "POST"
-      if(!BLOCKCHAIN_INFO.signRequest) fetchParams.body = data
+    if(method){
+      fetchParams.method = method
     }
+
+    if(body && !BLOCKCHAIN_INFO.signRequest){
+      fetchParams.body = data
+    }
+
     let url = this.rpcUrl + path
     return new Promise((resolve, reject) => {
       fetch(url, fetchParams)
