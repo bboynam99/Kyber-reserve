@@ -227,7 +227,12 @@ export function filterSetRateAction(arrayAction){
 export function mappingSetRateHistory(arraySetRate){
   let ratesObj = {}
   if(arraySetRate && Array.isArray(arraySetRate) && arraySetRate.length){
+    let arrayZeroRate = Array(arraySetRate[0].Params.buys.length).fill(0)
+
     arraySetRate.map(item => {
+      
+      if(CONSTANTS.HIDE_ZERO_SET_RATE && JSON.stringify(arrayZeroRate) == JSON.stringify(item.Params.buys) && JSON.stringify(arrayZeroRate) == JSON.stringify(item.Params.sells)) return
+
       item.Params.tokens.map((tokenSymbol, index) => {
         if(!ratesObj[tokenSymbol]) ratesObj[tokenSymbol] = []
 

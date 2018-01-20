@@ -11,19 +11,24 @@ export default class LineChart extends Component {
   render() {
 
     let dataProvider = this.props.data
-    console.log(dataProvider)
     let config = {
       "type": "serial",
       "theme": "light",
       "dataProvider": dataProvider,
+      "gridAboveGraphs": true,
+      "startDuration": 1,
+      "categoryField": "date",
+      "dataDateFormat": "YYYY-MM-DD",
+      "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
+
       "valueAxes": [{
         "gridColor": "#FFFFFF",
         "gridAlpha": 0.2,
         "dashLength": 0
       }],
-      "gridAboveGraphs": true,
-      "startDuration": 1,
+      
       "graphs": [{
+        "id": "g1",
         "title": "Buy",
         "balloonText": "[[title]]: <b>[[value]]</b>",
         "bullet": "round",
@@ -31,8 +36,10 @@ export default class LineChart extends Component {
         "bulletBorderColor": "#ffffff",
         "bulletBorderAlpha": 1,
         "bulletBorderThickness": 2,
-        "valueField": "buy"
+        "valueField": "buy",
+        "hideBulletsCount": 120,
       }, {
+        "id": "g2",
         "title": "Sell",
         "balloonText": "[[title]]: <b>[[value]]</b>",
         "bullet": "round",
@@ -40,9 +47,11 @@ export default class LineChart extends Component {
         "bulletBorderColor": "#ffffff",
         "bulletBorderAlpha": 1,
         "bulletBorderThickness": 2,
-        "valueField": "sell"
+        "valueField": "sell",
+        "hideBulletsCount": 120,
       }],
-      "pathToImages": "http://cdn.amcharts.com/lib/3/images/",
+
+      
       "chartScrollbar": {
         "graph": "g1",
         "oppositeAxis": false,
@@ -58,19 +67,13 @@ export default class LineChart extends Component {
         "autoGridCount": true,
         "color": "#AAAAAA",
       },
-      "valueScrollbar": {
-        "oppositeAxis": false,
-        "offset": 50,
-        "scrollbarHeight": 10
-      },
-      "categoryField": "date",
+      
 
       "categoryAxis": {
         "parseDates": true,
         "equalSpacing": true,
         "dashLength": 1,
         "minorGridEnabled": true,
-
 
         "minPeriod": "fff",
         "dateFormats": [{
@@ -106,7 +109,7 @@ export default class LineChart extends Component {
 
       "chartCursor": {
         "valueBalloonsEnabled": true,
-        "categoryBalloonDateFormat": "MMM DD, NN:SS"
+        "categoryBalloonDateFormat": "MMM DD, NN:SS",
       }
     };
 
