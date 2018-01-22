@@ -21,8 +21,8 @@ export default class HttpProvider extends BaseEthereumProvider {
     return this.connection
   }
 
-  signHeader(message) {
-    return Crypto.createHmac('sha512', CONSTANTS.SECRET_API_KEY)
+  signHeader(message, secretKey) {
+    return Crypto.createHmac('sha512', secretKey)
       .update(message)
       .digest('hex')
   }
@@ -33,14 +33,16 @@ export default class HttpProvider extends BaseEthereumProvider {
     }).join('&')
   }
 
-  send(path, method, body) {
+  send(keyString, path, method, body) {
     let data = body || {}
     let fetchParams = {}
+    let paramMess
 
     if(BLOCKCHAIN_INFO.signRequest){
       data.nonce = Date.now()
-      let paramMess = this.paramQuery(data)
-      let signHeader = this.signHeader(paramMess)
+      
+      paramMess = this.paramQuery(data)
+      let signHeader = this.signHeader(paramMess, keyString)
 
       fetchParams.headers= {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -60,7 +62,8 @@ export default class HttpProvider extends BaseEthereumProvider {
       fetchParams.body = data
     }
 
-    let url = this.rpcUrl + path
+    let containPrams = path.indexOf("?") > -1 
+    let url = paramMess ? this.rpcUrl + path + (containPrams ? "&" : "?") + paramMess : this.rpcUrl + path
     return new Promise((resolve, reject) => {
       fetch(url, fetchParams)
         .then((response) => {

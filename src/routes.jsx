@@ -6,6 +6,7 @@ import {
 
 import { Header } from './components/Header'
 
+import { Sign } from './components/sign'
 // import App from './app';
 import { TokenInfo } from './components/TokenInfo'
 import { RateChange } from './components/RateChange';
@@ -17,6 +18,7 @@ const Routes = () => (
   <Router>
     <div>
       <Header />
+      <Sign />
       <Route exact path="/" component={TokenInfo} />
       <Route path="/dashboard" component={TokenInfo} />
       <Route path="/rates_keeper" component={RateChange} />

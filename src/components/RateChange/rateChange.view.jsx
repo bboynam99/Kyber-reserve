@@ -25,6 +25,7 @@ const RateChangeView = ({ data, selected, selectChange }) => {
               </div>
               <div class="row">
                 <div class="col-6 col-md-2">
+                  {!data || !Object.keys(data).length ? "NO SET RATE DATA" : ""}
                   <div class="label">TOKEN</div>
                   <select value={selected} onChange={selectChange}>
                     {data ? Object.keys(data).map( (tokenSymbol, i) => (

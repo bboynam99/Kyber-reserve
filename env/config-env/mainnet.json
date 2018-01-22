@@ -122,5 +122,5 @@
     "ws_endpoint": "ws://kyberdashboard:8000/",
     "evaluate_endpoint": "http://kyberdashboard:9001/"
   },
-  "signRequest": false
+  "signRequest": true
 }

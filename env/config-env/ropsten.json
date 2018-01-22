@@ -118,9 +118,9 @@
     "api_key": "D8YAEQ3V4THAPDA9YSB1YGA1QY9KAMHY6M"
   },
   "endpoint": {
-    "http_endpoint": "http://kyberdashboard:8000/",
-    "ws_endpoint": "ws://kyberdashboard:8000/",
-    "evaluate_endpoint": "http://kyberdashboard:9001/"
+    "http_endpoint": "https://b8600fed.ngrok.io/",
+    "ws_endpoint": "ws://192.168.24.242:8000/",
+    "evaluate_endpoint": "https://b8600fed.ngrok.io/"
   },
-  "signRequest": false
+  "signRequest": true
 }
