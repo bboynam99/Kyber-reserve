@@ -11,5 +11,7 @@ const LINK = require("./link.svg")
 const MCO = require("./mco.svg")
 const OMG = require("./omg.svg")
 const PAY = require("./pay.svg")
+const SNT = require("./snt.svg")
+const SALT = require("./salt.svg")
 
-export default { ADX, BAT, CVC, DGD, EOS, ETH, FUN, GNT, KNC, LINK, MCO, OMG, PAY }
+export default { ADX, BAT, CVC, DGD, EOS, ETH, FUN, GNT, KNC, LINK, MCO, OMG, PAY, SNT, SALT }
